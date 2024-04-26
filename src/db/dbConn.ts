@@ -1,4 +1,5 @@
 import mongoose from "mongoose";
+require('dotenv').config();
 const uri: string = process.env.URI || '';
 
 export async function dbConnect(){
