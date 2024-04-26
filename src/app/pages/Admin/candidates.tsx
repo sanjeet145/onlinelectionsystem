@@ -37,7 +37,7 @@ export default function AdminCandidate() {
                 <div className='flex-container'>
                     {candidates.map(candidate => (
                        <>
-                        <CandidateCard  {...candidate} />
+                        <CandidateCard key={candidate.id} {...candidate} />
                         </>
 
                     ))}

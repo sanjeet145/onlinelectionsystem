@@ -39,7 +39,7 @@ export default function Voters() {
                 </tr>
                 {voters.map(voter => (
                   
-                     <VotersCard {...voter} />
+                     <VotersCard key={voter.id} {...voter} />
                 ))}
             </table>
         </>
