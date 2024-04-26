@@ -1,4 +1,4 @@
-import AdminDashboard from "./admindashboard";
+
 import ProfileNav from "./nav";
 
 export default function adminPage(){

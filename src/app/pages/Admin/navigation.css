@@ -9,6 +9,9 @@
     --color8: #E56B6F;
 }
 
+.profile{
+    display: flex;
+}
 .navigation-bar{
     display: flex;
     flex-direction: column;

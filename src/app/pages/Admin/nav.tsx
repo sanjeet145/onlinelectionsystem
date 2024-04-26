@@ -15,7 +15,7 @@ export default function ProfileNav() {
     };
 
     return (
-        <div className=" flex">
+        <div className=" profile">
             <div className="nav-bar navigation-bar">
             <button className="nav-btn" onClick={() => handleNavItemClick("Dashboard")}>
                 Dashboard

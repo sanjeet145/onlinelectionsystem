@@ -1,0 +1,9 @@
+.vote-card{
+    height: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 3px;
+    margin-top: 10px;
+  }
