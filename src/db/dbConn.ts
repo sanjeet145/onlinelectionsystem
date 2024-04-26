@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-const uri= process.env.URL;
+const uri= process.env.URI;
 
 export async function dbConnect(){
     try{
