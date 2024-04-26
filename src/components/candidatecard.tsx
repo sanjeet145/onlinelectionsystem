@@ -1,3 +1,4 @@
+import Image from "next/image";
 
 export default function CandidateCard(candidate: any) {
 
@@ -6,7 +7,7 @@ export default function CandidateCard(candidate: any) {
             {candidate ?
                 (
                     <>
-                        <img src={candidate.img} alt={candidate.name} />
+                        <Image src={candidate.img} alt={candidate.name} />
                         <div className="candidate-details">
                             <p><a>Candidate Name:</a> {candidate.fname}</p>
                             <p><a>Election Name:</a> BJP</p>
