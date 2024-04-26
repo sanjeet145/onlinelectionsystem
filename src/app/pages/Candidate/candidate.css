@@ -1,0 +1,37 @@
+:root {
+    --color1: #C38EB4;
+    --color2: #26425A;
+    --color3: #294D61;
+    --color4: #6DA5C0;
+    --color5: #05161A;
+    --color6: #F1916D;
+    --color7: #EAAC8B;
+    --color8: #E56B6F;
+}
+
+
+.candidate-card{
+    height: fit-content;
+    min-height: 
+    300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 300px;
+    padding: 10px;
+    background-color: var(--color5);
+    border-radius: 10px;
+    img{
+        height: 150px;
+    }
+}
+.not-approved{
+    color: rgb(233, 28, 28);
+}
+
+.candidate-details p a{
+    color: var(--color1);
+}
+.candidate-details p{
+    color: #a7dbf5;
+}

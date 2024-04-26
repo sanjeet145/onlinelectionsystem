@@ -1,0 +1,57 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+    --color1: #C38EB4;
+    --color2: #26425A;
+    --color3: #294D61;
+    --color4: #6DA5C0;
+    --color5: #05161A;
+    --color6: #F1916D;
+    --color7: #EAAC8B;
+    --color8: #E56B6F;
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 0, 0, 0;
+  }
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  /* background: linear-gradient(
+      to bottom,
+      transparent,
+      rgb(var(--background-end-rgb))
+    )
+    rgb(var(--background-start-rgb)); */
+    background-color: var(--color2);
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+.Btn{
+  margin-top: 10px;
+  height: 40px;
+  width: 100px;
+  border-radius: 10px;
+  font-weight: bolder;
+  background-color: var(--color6);
+}
+.Btn:hover{
+  border: 1px solid var(--color7);
+  color: var(--color6);
+  background-color: var(--color2);
+}
+
