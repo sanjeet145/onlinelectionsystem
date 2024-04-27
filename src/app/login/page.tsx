@@ -76,7 +76,9 @@ export default function Login() {
                     if(data.success){
                         router.push('pages/Admin');
                     }
+                   else{
                     alert(data.message);
+                   }
         }catch{
             alert("not submitted");
         }

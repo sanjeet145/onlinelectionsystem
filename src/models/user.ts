@@ -31,6 +31,10 @@ const userSchema = new mongoose.Schema({
         type:Boolean,
         default:false,
     },
+    isVoted:{
+        type:Boolean,
+        default:false,
+    },
     token:{
         type:String,
     }

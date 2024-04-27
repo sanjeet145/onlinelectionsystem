@@ -17,25 +17,25 @@ export default function ProfileNav() {
     return (
         <div className=" profile">
             <div className="nav-bar navigation-bar">
-            <button className="nav-btn" onClick={() => handleNavItemClick("Dashboard")}>
+            <button className={selectedNavItem === "Dashboard" ?"nav-btn selected-btn":"nav-btn" } onClick={() => handleNavItemClick("Dashboard")}>
                 Dashboard
             </button>
-            <button className="nav-btn" onClick={() => handleNavItemClick("Candidates")}>
+            <button className={selectedNavItem === "Candidates" ?"nav-btn selected-btn":"nav-btn" } onClick={() => handleNavItemClick("Candidates")}>
                 Candidates
             </button>
-            <button className="nav-btn" onClick={() => handleNavItemClick("Voters")}>
+            <button className={selectedNavItem === "Voters" ?"nav-btn selected-btn":"nav-btn" } onClick={() => handleNavItemClick("Voters")}>
                 Voters
             </button>
-            <button className="nav-btn" onClick={() => handleNavItemClick("PendingVoters")}>
+            <button className={selectedNavItem === "PendingVoters" ?"nav-btn selected-btn":"nav-btn" } onClick={() => handleNavItemClick("PendingVoters")}>
                 Pending Voters
             </button>
-            <button className="nav-btn" onClick={() => handleNavItemClick("New Voters")}>
+            <button className={selectedNavItem === "NewVoters" ?"nav-btn selected-btn":"nav-btn" } onClick={() => handleNavItemClick("NewVoters")}>
                 Add Voters
             </button>
-            <button className="nav-btn" onClick={() => handleNavItemClick("PreviousElections")}>
+            <button className={selectedNavItem === "PreviousElections" ?"nav-btn selected-btn":"nav-btn" } onClick={() => handleNavItemClick("PreviousElections")}>
                 Previous Elections
             </button>
-            <button className="nav-btn" onClick={() => handleNavItemClick("Logout")}>
+            <button className={selectedNavItem === "Logout" ?"nav-btn selected-btn":"nav-btn" } onClick={() => handleNavItemClick("Logout")}>
                 Log out
             </button>
             </div>

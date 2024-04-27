@@ -27,10 +27,13 @@
     padding: 10px;
     margin-top: 10px;
     border-bottom: 2px solid rgba(9, 34, 50, 0.92);
+    transition: 0.1s all ;
 }
-.nav-btn:hover{
+.nav-btn:hover, .selected-btn{
     border-radius: 50px;
     background-color: var(--color3);
+    font-size: large;
+    text-align: center;
 }
 
 .flex-container {
@@ -61,8 +64,12 @@
 .candidate-details p{
     color: #a7dbf5;
 }
-
-
+.lists-head{
+    text-align: center;
+    font-size: 40px;
+    margin-bottom: 2px;
+    color: #f4cdbe;
+}
 
 table{
     margin: 10px;

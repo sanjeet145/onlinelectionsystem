@@ -32,7 +32,7 @@ export default function AdminCandidate() {
     return (
         <div className=' m-2'>
             
-            <h2 className=' text-4xl underline mb-2'>Candidate List</h2>
+            <h2 className='lists-head'>Candidate List</h2>
             {candidates.length > 0 ? 
                 <div className='flex-container'>
                     {candidates.map(candidate => (
