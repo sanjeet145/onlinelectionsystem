@@ -60,7 +60,7 @@ export default function AdminDashboard() {
                 </div>
                 <div className=" dashboard-card">
                     {/* <h1>{candidates[1].fname}</h1> */}
-                    <h1>Candidate Wining</h1>
+                    {/* <h1>Candidate Wining</h1> */}
                 </div>
             </div>
         </>

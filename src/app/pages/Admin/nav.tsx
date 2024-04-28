@@ -9,6 +9,7 @@ import Voters from "./components/voters";
 import PendingVoters from "./components/pendingVoters";
 import AddNewVoter from "./components/newvoter";
 import NewElection from "./components/newelection";
+import PreviousElections from "./components/previouselections";
 
 export default function ProfileNav() {
     const [selectedNavItem, setSelectedNavItem] = useState("Dashboard");
@@ -52,7 +53,7 @@ export default function ProfileNav() {
             {selectedNavItem === "PendingVoters" && <PendingVoters />}
             {selectedNavItem === "NewVoters" && <AddNewVoter />}
             {selectedNavItem === "NewElection" && <NewElection />}
-            {/* {selectedNavItem === "PreviousElections" && <PreviousElectionsContent />} */}
+            {selectedNavItem === "PreviousElections" && <PreviousElections />}
             {/* {selectedNavItem === "Logout" && <LogoutContent />} */}
         </div>
     );

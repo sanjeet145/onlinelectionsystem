@@ -58,16 +58,35 @@
     justify-content: center;
     font-size: 17px;
 }
-.dashboard-card:nth-child(even){
+
+.prev-card{
+    flex: 1 0 200px; 
+    min-width: 200px; 
+    max-width: 250px;
+    height: 200px;
+    margin: 5px; 
+    padding: 10px;
+    border-radius: 10px;
+    border-radius: 10px;
+    font-size: 17px;
+    h1{
+        color:rgb(203, 222, 240);
+        a{
+            color: #182a2e;
+        }
+    }
+}
+.prev-card:nth-child(even), .dashboard-card:nth-child(even){
     background-color: var(--color1);
 }
-.dashboard-card:nth-child(odd){
+.prev-card:nth-child(odd), .dashboard-card:nth-child(odd){
     background-color: var(--color8);
 }
 .dashboard-card h1:nth-child(1){
     font-size: 50px;
     margin-bottom: 15px;
 }
+
 .candidate-card{
     flex: 1 1 300px; 
     min-width: 300px; 

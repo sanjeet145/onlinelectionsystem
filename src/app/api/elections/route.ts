@@ -1,15 +1,31 @@
 import { dbConnect } from "@/db/dbConn";
 import Election from "@/models/election";
-import { NextRequest,NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 
-export async function POST(req:NextRequest){
+export async function POST(req: NextRequest) {
     await dbConnect();
     const reqBody = await req.json();
-        const { electionname,enddate,admin } = reqBody.form;
-        console.log(reqBody);
-        const election=new Election({electionname,enddate,admin});
-        await election.save();
+    const { electionname, enddate, admin } = reqBody.form;
+    const election = new Election({ electionname, enddate, admin });
+    await election.save();
+    return NextResponse.json({
+        message: "details registered"
+    })
+}
+
+export async function GET(req: NextRequest) {
+    try {
+        await dbConnect();
+        const elections = await Election.find();
+        console.log(elections);
         return NextResponse.json({
-            message:"details registered"
+            elections
         })
+
+    } catch (error) {
+        console.log(error);
+        return NextResponse.json({
+            message: "unable to fetch"
+        })
+    }
 }

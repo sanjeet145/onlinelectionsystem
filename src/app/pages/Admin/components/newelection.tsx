@@ -33,7 +33,7 @@ export default function NewElection() {
                 });
                 const data = await response.json();
                 alert(data.message);
-                router.push('/');
+                // router.push('/');
             }
 
         } catch (e: any) {
