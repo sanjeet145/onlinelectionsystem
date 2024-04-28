@@ -29,7 +29,7 @@ export default function AdminCandidate() {
         fetchData(); 
     }, []);
     return (
-        <div className=' m-2'>
+        <div className="main-content">
             
             <h2 className='lists-head'>Candidate List</h2>
             {candidates.length > 0 ? 

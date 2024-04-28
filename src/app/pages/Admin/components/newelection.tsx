@@ -46,6 +46,7 @@ export default function NewElection() {
 
 
     return (
+        <div className="main-content">
         <form className="formc" method="POST" onSubmit={onsubmit}>
             <div className="ename">
                 <p>Election Name</p>
@@ -70,5 +71,6 @@ export default function NewElection() {
                     value={form.admin} /></div>
             <button className="Btn" type="submit">Register</button>
         </form>
+        </div>
     )
 }

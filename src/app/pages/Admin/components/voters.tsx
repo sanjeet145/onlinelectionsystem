@@ -30,7 +30,7 @@ export default function Voters() {
     }, []);
 
     return (
-        <>
+        <div className="main-content">
             <table>
                 <tr>
                     <th>Name</th>
@@ -42,6 +42,6 @@ export default function Voters() {
                      <VotersCard key={voter.id} {...voter} />
                 ))}
             </table>
-        </>
+        </div>
     )
 }

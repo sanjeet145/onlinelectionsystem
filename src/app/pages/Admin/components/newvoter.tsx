@@ -4,14 +4,16 @@ import { useState } from "react";
 import '../../css/forms.css';
 
 export default function AddNewVoter() {
-    const [val , setVal] = useState("");
-    const inputEvent=(e:any)=>{
+    const [val, setVal] = useState("");
+    const inputEvent = (e: any) => {
         console.log(e.target.value);
     }
 
     return (
-        <div className="add-form">
-        <RegisterForm/>
+        <div className="main-content">
+            <div className="add-form">
+                <RegisterForm />
+            </div>
         </div>
     )
 }

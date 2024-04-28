@@ -84,10 +84,9 @@
     font-size: 17px;
 
     h1 {
-        color: rgb(203, 222, 240);
-
+        color: #182a2e;
         a {
-            color: #182a2e;
+            color: rgb(203, 222, 240);
         }
     }
 }

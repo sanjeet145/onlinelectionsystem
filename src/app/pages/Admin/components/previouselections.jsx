@@ -17,11 +17,10 @@ export default function PreviousElections() {
 
         fetchData();
     }, []);
-    console.log(elections);
-    // const formatDate =(enddate: Date) => moment(enddate).format('MMMM Do YYYY, h:mm:ss a');
     return (
+        <div className="main-content">
         <div className="pending">
-            <h1>elections</h1>
+            <h1 className="lists-head">Previous Elections</h1>
             <div className="flex-container">
                 {elections ?
                     <>
@@ -44,6 +43,7 @@ export default function PreviousElections() {
                     </>
                 }
             </div>
+        </div>
         </div>
     )
 }
