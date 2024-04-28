@@ -9,10 +9,19 @@
     --color8: #E56B6F;
 }
 
-.profile{
+.profile {
     display: flex;
 }
-.navigation-bar{
+
+.small-btn {
+    display: none;
+}
+
+.nav-bar {
+    z-index: 100;
+}
+
+.navigation-bar {
     display: flex;
     flex-direction: column;
     height: 100vh;
@@ -21,15 +30,18 @@
     background-color: var(--color5);
     border-top-right-radius: 50px;
 }
-.nav-btn{
+
+.nav-btn {
     height: 40px;
     text-align: left;
     padding: 10px;
     margin-top: 10px;
     border-bottom: 2px solid rgba(9, 34, 50, 0.92);
-    transition: 0.1s all ;
+    transition: 0.1s all;
 }
-.nav-btn:hover, .selected-btn{
+
+.nav-btn:hover,
+.selected-btn {
     border-radius: 50px;
     background-color: var(--color3);
     font-size: large;
@@ -39,16 +51,17 @@
 .flex-container {
     display: flex;
     flex-wrap: wrap;
-    gap: 10px; 
+    gap: 10px;
     height: fit-content;
 }
 
-.dashboard-card{
-    flex: 1 0 200px; 
-    min-width: 200px; 
+
+.dashboard-card {
+    flex: 1 0 200px;
+    min-width: 200px;
     max-width: 250px;
     height: 200px;
-    margin: 5px; 
+    margin: 5px;
     padding: 10px;
     border-radius: 10px;
     border-radius: 10px;
@@ -59,91 +72,106 @@
     font-size: 17px;
 }
 
-.prev-card{
-    flex: 1 0 200px; 
-    min-width: 200px; 
+.prev-card {
+    flex: 1 0 200px;
+    min-width: 200px;
     max-width: 250px;
     height: 200px;
-    margin: 5px; 
+    margin: 5px;
     padding: 10px;
     border-radius: 10px;
     border-radius: 10px;
     font-size: 17px;
-    h1{
-        color:rgb(203, 222, 240);
-        a{
+
+    h1 {
+        color: rgb(203, 222, 240);
+
+        a {
             color: #182a2e;
         }
     }
 }
-.prev-card:nth-child(even), .dashboard-card:nth-child(even){
+
+.prev-card:nth-child(even),
+.dashboard-card:nth-child(even) {
     background-color: var(--color1);
 }
-.prev-card:nth-child(odd), .dashboard-card:nth-child(odd){
+
+.prev-card:nth-child(odd),
+.dashboard-card:nth-child(odd) {
     background-color: var(--color8);
 }
-.dashboard-card h1:nth-child(1){
+
+.dashboard-card h1:nth-child(1) {
     font-size: 50px;
     margin-bottom: 15px;
 }
 
-.candidate-card{
-    flex: 1 1 300px; 
-    min-width: 300px; 
-    margin: 5px; 
+.candidate-card {
+    flex: 1 1 300px;
+    min-width: 300px;
+    margin: 5px;
     padding: 10px;
     background-color: var(--color5);
     border-radius: 10px;
-    border-radius: 10px; 
-    img{
+    border-radius: 10px;
+
+    img {
         height: 150px;
     }
 }
 
-.not-approved{
+.not-approved {
     color: rgb(233, 28, 28);
 }
 
-.candidate-details p a{
+.candidate-details p a {
     color: var(--color1);
 }
-.candidate-details p{
+
+.candidate-details p {
     color: #a7dbf5;
 }
-.lists-head{
+
+.lists-head {
     text-align: center;
     font-size: 40px;
     margin-bottom: 2px;
     color: #f4cdbe;
 }
 
-table{
+table {
     margin: 10px;
     width: 100%;
     height: fit-content;
 }
-th{
+
+th {
     background-color: rgb(80, 90, 101);
     color: #f4cdbe;
     height: 50px;
     border-radius: 10px;
 }
-tr{
+
+tr {
     height: fit-content;
 }
-.voter-row{
+
+.voter-row {
     text-align: center;
     height: 35px;
-    .voter-name{
+
+    .voter-name {
         text-transform: capitalize;
     }
 }
 
-.pending{
+.pending {
     width: 100%;
     margin: 10px;
 }
-.pending-voters{
+
+.pending-voters {
     display: flex;
     justify-content: space-between;
     height: 60px;
@@ -153,9 +181,36 @@ tr{
     background-color: rgb(74, 81, 88);
     padding: 10px;
 }
-.pending-voters a:nth-child(1){
+
+.pending-voters a:nth-child(1) {
     text-transform: capitalize;
 }
 
-.add-card{
+
+
+@media (max-width:700px) {
+    .navigation-bar {
+        position: relative;
+        left: -100%;
+    border-top-right-radius: 0px;
+        transition: 0.8s all;
+    }
+
+    .hide {
+        left: 0%;
+    }
+
+    .small-btn {
+        position: relative;
+        display: block;
+        z-index: 10;
+        background-color: var(--color5);
+    }
+
+    .main-content {
+        margin-top: 50px;
+        position: absolute;
+        width: 100%;
+    }
+
 }

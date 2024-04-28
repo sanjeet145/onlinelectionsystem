@@ -39,7 +39,7 @@ export default function AdminDashboard() {
         }
     }
     return (
-        <>
+        <div className="main-content">
             <div className="flex-container">
                 <div className=" dashboard-card">
                     <h1>{candis}</h1>
@@ -58,12 +58,12 @@ export default function AdminDashboard() {
                     <h1>{candidates.length-voted}</h1>
                     <h1>Remaining Votes</h1>
                 </div>
-                <div className=" dashboard-card">
-                    {/* <h1>{candidates[1].fname}</h1> */}
-                    {/* <h1>Candidate Wining</h1> */}
-                </div>
+                {/* <div className=" dashboard-card">
+                    <h1>{candidates[1].fname}</h1>
+                    <h1>Candidate Wining</h1>
+                </div> */}
             </div>
-        </>
+        </div>
     )
 }
 

@@ -27,7 +27,7 @@ export default function PreviousElections() {
                     <>
                         {
                             elections.map(election => (
-                                <div className="prev-card">
+                                <div className="prev-card" key={election.id}>
                                     <h1>Election Name: <a>{election.electionname}</a></h1>
                                     <h1>Election Date: <a>{new Date(election.enddate).toLocaleDateString('en-GB', {
                                         day: '2-digit',
