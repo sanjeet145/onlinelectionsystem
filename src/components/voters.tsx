@@ -12,11 +12,6 @@ export default function VotersCard(voter:any){
             {voter.mobile}
         </td>
         </tr>
-        {/* <div>
-        <a className=" items-center ">{voter.fname}</a>
-            <a className=" items-center ">{voter.voterid}</a>
-            <a className=" items-center ">{voter.mobile}</a>
-        </div> */}
         </>
     )
 }

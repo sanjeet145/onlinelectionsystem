@@ -15,13 +15,21 @@
     align-items: center;
     height: 100vh;
     background-color: var(--color2);  
+}
+.card1{
+    height: fit-content;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: #05161A;
+      border: 1px solid var(--color1);
+
   }
 
 .formc{
-    border: 1px solid var(--color1);
     padding: 10px;
     border-radius: 5px;
     input{
+        background-color: rgb(231, 229, 226);
         margin-bottom: 10px;
         color: var(--color5);
         padding: 5px;

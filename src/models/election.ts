@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 import { type } from "os";
 
 const electionSchema = new mongoose.Schema({
-    name:{
+    electionname:{
         type:String,
         required:true,
     },
@@ -22,7 +22,5 @@ try {
 } catch (error) {
     
 }
-
-// const Election = mongoose.models.Elections ||mongoose.model("Election", ElectionSchema);
 
 export default Election;

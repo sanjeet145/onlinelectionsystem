@@ -3,9 +3,12 @@
 import Link from "next/link";
 import { useState } from "react";
 import "./navigation.css";
-import AdminDashboard from "./admindashboard";
-import AdminCandidate from "./candidates";
-import Voters from "./voters";
+import AdminDashboard from "./components/admindashboard";
+import AdminCandidate from "./components/candidates";
+import Voters from "./components/voters";
+import PendingVoters from "./components/pendingVoters";
+import AddNewVoter from "./components/newvoter";
+import NewElection from "./components/newelection";
 
 export default function ProfileNav() {
     const [selectedNavItem, setSelectedNavItem] = useState("Dashboard");
@@ -32,6 +35,9 @@ export default function ProfileNav() {
             <button className={selectedNavItem === "NewVoters" ?"nav-btn selected-btn":"nav-btn" } onClick={() => handleNavItemClick("NewVoters")}>
                 Add Voters
             </button>
+            <button className={selectedNavItem === "NewElection" ?"nav-btn selected-btn":"nav-btn" } onClick={() => handleNavItemClick("NewElection")}>
+                New Election
+            </button>
             <button className={selectedNavItem === "PreviousElections" ?"nav-btn selected-btn":"nav-btn" } onClick={() => handleNavItemClick("PreviousElections")}>
                 Previous Elections
             </button>
@@ -43,6 +49,9 @@ export default function ProfileNav() {
             {selectedNavItem === "Dashboard" && <AdminDashboard/>}
             {selectedNavItem === "Candidates" && <AdminCandidate/>}
             {selectedNavItem === "Voters" && <Voters />}
+            {selectedNavItem === "PendingVoters" && <PendingVoters />}
+            {selectedNavItem === "NewVoters" && <AddNewVoter />}
+            {selectedNavItem === "NewElection" && <NewElection />}
             {/* {selectedNavItem === "PreviousElections" && <PreviousElectionsContent />} */}
             {/* {selectedNavItem === "Logout" && <LogoutContent />} */}
         </div>

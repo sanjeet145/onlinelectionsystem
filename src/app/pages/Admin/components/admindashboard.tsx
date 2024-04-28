@@ -28,11 +28,9 @@ export default function AdminDashboard() {
 
         fetchData();
     }, []);
-    console.log(candidates);
     let candis=0;
     let voted=0
     for(const candidate of candidates){
-        console.log(candidate);
         if(candidate.isCandidate){
             candis++;
         }
@@ -43,25 +41,25 @@ export default function AdminDashboard() {
     return (
         <>
             <div className="flex-container">
-                <div className=" candidate-card">
+                <div className=" dashboard-card">
                     <h1>{candis}</h1>
                     <h1>Number of Candidates</h1>
 
                 </div>
-                <div className=" candidate-card">
+                <div className=" dashboard-card">
                     <h1>{candidates.length}</h1>
                     <h1>Number of Voters</h1>
                 </div>
-                <div className=" candidate-card">
+                <div className=" dashboard-card">
                     <h1>{voted}</h1>
                     <h1>Total Voted</h1>
                 </div>
-                <div className=" candidate-card">
+                <div className=" dashboard-card">
                     <h1>{candidates.length-voted}</h1>
                     <h1>Remaining Votes</h1>
                 </div>
-                <div className=" candidate-card">
-                    <h1>{candidates.length}</h1>
+                <div className=" dashboard-card">
+                    {/* <h1>{candidates[1].fname}</h1> */}
                     <h1>Candidate Wining</h1>
                 </div>
             </div>

@@ -28,7 +28,6 @@ export default function AdminCandidate() {
 
         fetchData(); 
     }, []);
-
     return (
         <div className=' m-2'>
             

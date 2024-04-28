@@ -40,8 +40,34 @@
     display: flex;
     flex-wrap: wrap;
     gap: 10px; 
+    height: fit-content;
 }
 
+.dashboard-card{
+    flex: 1 0 200px; 
+    min-width: 200px; 
+    max-width: 250px;
+    height: 200px;
+    margin: 5px; 
+    padding: 10px;
+    border-radius: 10px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: 17px;
+}
+.dashboard-card:nth-child(even){
+    background-color: var(--color1);
+}
+.dashboard-card:nth-child(odd){
+    background-color: var(--color8);
+}
+.dashboard-card h1:nth-child(1){
+    font-size: 50px;
+    margin-bottom: 15px;
+}
 .candidate-card{
     flex: 1 1 300px; 
     min-width: 300px; 
@@ -54,6 +80,7 @@
         height: 150px;
     }
 }
+
 .not-approved{
     color: rgb(233, 28, 28);
 }
@@ -77,9 +104,10 @@ table{
     height: fit-content;
 }
 th{
-    background-color: #7a0105;
-    height: 40px;
-    border-radius: 5px;
+    background-color: rgb(80, 90, 101);
+    color: #f4cdbe;
+    height: 50px;
+    border-radius: 10px;
 }
 tr{
     height: fit-content;
@@ -90,4 +118,25 @@ tr{
     .voter-name{
         text-transform: capitalize;
     }
+}
+
+.pending{
+    width: 100%;
+    margin: 10px;
+}
+.pending-voters{
+    display: flex;
+    justify-content: space-between;
+    height: 60px;
+    border-radius: 5px;
+    width: 100%;
+    align-items: center;
+    background-color: rgb(74, 81, 88);
+    padding: 10px;
+}
+.pending-voters a:nth-child(1){
+    text-transform: capitalize;
+}
+
+.add-card{
 }
