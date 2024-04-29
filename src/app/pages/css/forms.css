@@ -75,3 +75,17 @@
 .link{
     color: var(--color8);
 }
+
+.admin{
+    height: fit-content;
+    padding: 10px;
+    background-color: #007bff;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.uname{
+    margin-top: 10px;
+}
+.admin-clicked{
+    background-color: #043d7a;
+}

@@ -4,15 +4,6 @@ import { useEffect, useState } from "react";
 import "../pages/css/forms.css";
 import {useRouter} from "next/navigation";
 
-let isAdmin=false;
-const adminClick = () => {
-    if(isAdmin){
-        isAdmin=false;
-    }
-    else
-     isAdmin=true;
-  };
-
 export default function Login() {
     const router =useRouter();
     const [form, setForm] = useState({
@@ -29,6 +20,8 @@ export default function Login() {
         });
     };
     const [showPassword, setShowPassword] = useState(false);
+    const [isAdmin, setisAdmin] = useState(false);
+    const [loading, setloading] = useState(false);
 
     const togglePasswordVisibility = () => {
         setShowPassword((prev) => !prev);
@@ -39,8 +32,8 @@ export default function Login() {
         const link = document.querySelector('.admin');
     
         const handleClick = () => {
-          adminClick();
-        };
+        setisAdmin(!isAdmin);
+    };
     
         if (link) {
           link.addEventListener('click', handleClick);
@@ -51,14 +44,14 @@ export default function Login() {
             link.removeEventListener('click', handleClick);
           }
         };
-      }, []); 
+      }, [isAdmin]); 
     
     const onsubmit = async(e:any) => {
         e.preventDefault();
+        setloading(!loading);
         try{
             let response;
             if(isAdmin){
-                console.log("inside adminfetch");
                 response = await fetch("/api/users/admin", {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
@@ -82,13 +75,16 @@ export default function Login() {
         }catch{
             alert("not submitted");
         }
+        finally{
+        setloading(false);
+        }
     };
     return (
         <>
             <div className="form-card">
                 <div className="card1">
                     <form className="formc" onSubmit={onsubmit}>
-                    <a className="admin">Admin</a>
+                    <a className={isAdmin?"admin admin-clicked":"admin"}>Admin</a>
                         <div className="uname">
                             <p>Voter Id</p>
                             <input type="text"
@@ -111,7 +107,7 @@ export default function Login() {
                             </button>
                         </div>
                             </div>
-                        <button className="Btn" type="submit">Login</button>
+                        <button className="Btn" type="submit">{loading ? "loading":"Login"}</button>
                     </form>
                     <p>Already have account <Link href={"/register"} className="link">Register</Link></p>
                 </div>
