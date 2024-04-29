@@ -7,7 +7,7 @@ export default function CandidateCard(candidate: any) {
             {candidate ?
                 (
                     <>
-                        <Image src={candidate.img} alt={candidate.fname} />
+                        <Image src={candidate.img} alt={candidate.fname} width={300} height={300} />
                         <div className="candidate-details">
                             <p><a>Candidate Name:</a> {candidate.fname}</p>
                             <p><a>Election Name:</a> BJP</p>
