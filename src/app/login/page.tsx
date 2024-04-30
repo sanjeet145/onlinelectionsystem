@@ -71,7 +71,6 @@ export default function Login() {
                         router.push('pages/Admin');
                     }
         }catch(e){
-            console.log(e);
             alert("not submitted");
         }
         finally{
