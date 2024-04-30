@@ -66,12 +66,10 @@ export default function Login() {
             });
             }
             const data = await response.json();
+            alert(data.message);
                     if(data.success){
                         router.push('pages/Admin');
                     }
-                   else{
-                    alert(data.message);
-                   }
         }catch{
             alert("not submitted");
         }
