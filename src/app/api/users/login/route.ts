@@ -29,6 +29,10 @@ export async function POST(req: NextRequest) {
             })
             return response;
         }
+        return NextResponse.json({
+            message: "Username or Password is wrong",
+            success: false,
+        })
         
     }
     return NextResponse.json({
