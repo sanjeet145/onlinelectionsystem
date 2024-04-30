@@ -67,6 +67,7 @@ export default function Login() {
             }
             const data = await response.json();
             alert(data.message);
+            console.log(data);
                     if(data.success){
                         router.push('pages/Admin');
                     }
