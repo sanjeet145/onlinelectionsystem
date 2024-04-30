@@ -1,6 +1,7 @@
 "use client"
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import '../css/forms.css';
 
 export default function RegisterForm() {
     const router = useRouter();
@@ -8,7 +9,7 @@ export default function RegisterForm() {
         fname: "",
         pass: "",
         cfmpass: "",
-        voterId: "",
+        passKey: "",
         mobile: "",
         adminId: "",
     });
@@ -26,19 +27,21 @@ export default function RegisterForm() {
         setloading(!loading);
         event.preventDefault();
         try {
-            if (!form.fname || !form.pass || !form.cfmpass || !form.mobile || !form.voterId || !form.adminId) {
+            if (!form.fname || !form.pass || !form.cfmpass || !form.mobile || !form.passKey || !form.adminId) {
                 alert("Please fill all the fields");
             }
             else {
-                const response = await fetch("/api/users/register", {
+                const response = await fetch("/api/admin", {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ form }),
                 });
 
                 const data = await response.json();
-                alert(data.message);
-                if (data.success) {
+                if(data){
+                    alert(data.message);
+                }
+                if(data.success){
                     router.push('/login');
                 }
             }
@@ -100,12 +103,12 @@ export default function RegisterForm() {
                     </button>
                 </div>
             </div>
-            <div className="voterid">
-                <p>Voter Id</p>
+            <div className="passkey">
+                <p>Pass key</p>
                 <input type="text"
-                    name="voterId"
+                    name="passKey"
                     onChange={inputEvent}
-                    value={form.voterId} /></div>
+                    value={form.passKey} /></div>
             <div className="adminid">
                 <p>Admin Id</p>
                 <input type="text"

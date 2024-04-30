@@ -6,7 +6,7 @@ const adminSchema = new mongoose.Schema({
         type:String,
         required:true,
     },
-    voterid:{
+    adminid:{
         type:String,
         required:true,
         unique:true,
