@@ -7,7 +7,8 @@ import jwt from 'jsonwebtoken';
 export async function POST(req: NextRequest) {
     await dbConnect();
     const reqBody = await req.json();
-    const { voter, pass } = reqBody.form;
+    let { voter, pass } = reqBody.form;
+    voter =voter.toLowerCase();
     const user = await User.findOne({ voterid: voter });
     if (user) {
         if (pass == user.pass) {

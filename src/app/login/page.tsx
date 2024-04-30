@@ -70,7 +70,8 @@ export default function Login() {
                     if(data.success){
                         router.push('pages/Admin');
                     }
-        }catch{
+        }catch(e){
+            console.log(e);
             alert("not submitted");
         }
         finally{
