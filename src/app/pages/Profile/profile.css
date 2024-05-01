@@ -1,0 +1,20 @@
+.navbar-section{
+    height: 70px;
+    font-size: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.small-form{
+    height: fit-content;
+    width: fit-content;
+    position: fixed;
+    top: 20vh;
+    left: 20vw;
+}
+
+.hide{
+    display: none;
+    background-color: rgb(14, 14, 14);
+}

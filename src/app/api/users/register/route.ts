@@ -1,6 +1,7 @@
 
 import { dbConnect } from '@/db/dbConn';
 import Admin from '@/models/admin';
+import Election from '@/models/election';
 import User from '@/models/user';
 import { NextRequest, NextResponse } from 'next/server';
 
@@ -21,11 +22,19 @@ export async function POST(request: NextRequest) {
                     success: false
                 });
             }
-            const newUser = new User({ fname, voterid, pass, mobile, adminId })
+            const elections = await Election.find({admin:adminID});
+        const elec = elections.map((election: {
+            _id: any;
+    }) => (
+            {
+                electionid: election._id,
+            }
+        )) 
+            const newUser = new User({ fname, voterid, pass, mobile, adminId, Voted:elec })
             await newUser.save();
             return NextResponse.json({
                 message: "User Created",
-                success: true
+                success: false
             });
         }
         return NextResponse.json({
@@ -33,6 +42,7 @@ export async function POST(request: NextRequest) {
             success: false
         });
     } catch (error: any) {
+        console.log(error);
         return NextResponse.json({ error: "Internal Server Error" });
     }
 }

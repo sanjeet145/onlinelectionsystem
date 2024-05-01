@@ -17,13 +17,11 @@ export async function GET(req: NextRequest) {
     try {
         await dbConnect();
         const elections = await Election.find();
-        console.log(elections);
         return NextResponse.json({
             elections
         })
 
     } catch (error) {
-        console.log(error);
         return NextResponse.json({
             message: "unable to fetch"
         })

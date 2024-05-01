@@ -21,6 +21,6 @@
       "@/*": ["./src/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/app/pages/Admin/components/previouselections.jsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/app/pages/Admin/components/previouselections.jsx", "src/app/pages/Profile/components/elections.jsx"],
   "exclude": ["node_modules"]
 }
