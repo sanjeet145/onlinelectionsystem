@@ -13,6 +13,9 @@ const electionSchema = new mongoose.Schema({
     admin:{
         type:String,
         required:true,
+    },
+    result:{
+        type:String,
     }
 })
 
