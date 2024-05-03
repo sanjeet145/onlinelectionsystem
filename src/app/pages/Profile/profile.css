@@ -12,7 +12,17 @@
     position: fixed;
     top: 20vh;
     left: 20vw;
+    background-color: rgb(99, 149, 149);
+    padding: 10px;
+    border-radius: 5px;
+    input , textarea{
+        border-radius: 5px;
+        color: black;
+        padding: 5px;
+        width: 100%;
+    }
 }
+
 
 .hide{
     display: none;

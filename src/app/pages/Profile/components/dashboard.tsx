@@ -3,6 +3,7 @@
 import { useState } from "react";
 import BecomeCandidate from "./becomecandidate";
 import Elections from "./elections";
+import '../../Admin/navigation.css';
 
 export default function ProfileDashboard(){
     const [opencandidate,setcandidate] = useState(false);
@@ -38,9 +39,10 @@ export default function ProfileDashboard(){
         <div className={openadmin ? "small-form" : " small-form hide"}>
             <form>
                 <div>
-                    <p>Admin ID</p>
+                    <p>New Admin ID</p>
                     <input type="text" onChange={inputEvent} name="adminId" />
                 </div>
+                <button className="Btn">Change</button>
             </form>
         </div>
         <Elections/>

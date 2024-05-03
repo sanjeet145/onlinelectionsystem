@@ -65,8 +65,8 @@ export default function BecomeCandidate(){
                 value={form.electionid}
                 />
             </div>
-            <div>
-                <p>description</p>
+            <div className="textarea">
+                <p>Description</p>
                 <textarea name="description" 
                 onChange={inputEvent}
                 value={form.description} cols={30} rows={10}></textarea>
