@@ -8,36 +8,9 @@
     --color7: #EAAC8B;
     --color8: #E56B6F;
 }
-
-.profile {
-    display: flex;
-}
-
 .small-btn {
     display: none;
-}
-
-.nav-bar {
-    z-index: 100;
-}
-
-.navigation-bar {
-    display: flex;
-    flex-direction: column;
-    height: 100vh;
-    width: fit-content;
-    min-width: 200px;
-    background-color: var(--color5);
-    border-top-right-radius: 50px;
-}
-
-.nav-btn {
-    height: 40px;
-    text-align: left;
-    padding: 10px;
-    margin-top: 10px;
-    border-bottom: 2px solid rgba(9, 34, 50, 0.92);
-    transition: 0.1s all;
+    margin: 10px;
 }
 
 .nav-btn:hover,
@@ -85,6 +58,7 @@
 
     h1 {
         color: #182a2e;
+
         a {
             color: rgb(203, 222, 240);
         }
@@ -185,21 +159,75 @@ tr {
     text-transform: capitalize;
 }
 
-.admin-content{
-    width: 100%;
-    overflow: hidden;
-    padding: 10px;
-}
-.add-form{
+
+.add-form {
     width: fit-content;
 }
 
+.profile {
+    display: flex;
+    width: 100%;
+}
+
+.nav-bar {
+    width: fit-content;
+    display: flex;
+    flex-direction: column;
+}
+
+.navigation-bar {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    width: fit-content;
+    min-width: 200px;
+    background-color: var(--color5);
+    border-top-right-radius: 50px;
+}
+
+.nav-btn {
+    height: 40px;
+    text-align: left;
+    padding: 10px;
+    margin-top: 10px;
+    border-bottom: 2px solid rgba(9, 34, 50, 0.92);
+    transition: 0.1s all;
+}
+
+.bar{
+    height: 5px;
+    width: 30px;
+    background-color: #a7dbf5;
+    margin-top: 4px;
+    border-radius: 5px;
+}
+.close{
+    .bar:nth-child(1){
+        transform: rotate(-45deg) translateX(-2px) translateY(4px);
+        
+    }
+    .bar:nth-child(2){
+        display: none;
+    }
+    .bar:nth-child(3){
+        transform:  rotate(45deg) translateX(-2px) translateY(-4px);
+    }
+}
+
+.admin-content {
+    margin-top: 50px;
+}
 
 @media (max-width:700px) {
+    .nav-bar {
+        position: absolute;
+    }
+
     .navigation-bar {
-        position: relative;
-        left: -100%;
-    border-top-right-radius: 0px;
+        position: absolute;
+        left: -100vw;
+        padding-top: 50px;
+        border-top-right-radius: 0px;
         transition: 0.8s all;
     }
 
@@ -211,13 +239,9 @@ tr {
         position: relative;
         display: block;
         z-index: 10;
-        background-color: var(--color5);
     }
 
-    .main-content {
-        margin-top: 50px;
-        position: absolute;
-        width: 100%;
+    .admin-content {
+        width: 100vw;
     }
-
 }

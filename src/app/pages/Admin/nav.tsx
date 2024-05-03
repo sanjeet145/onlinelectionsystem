@@ -25,7 +25,7 @@ export default function ProfileNav() {
 
     useEffect(() => {
         const navbutton = document.querySelector('.small-btn');
-
+        navbutton?.classList.toggle("close");
         const handleClick = () => {
             setNavOpen(!navOpen);
         };
@@ -56,8 +56,12 @@ export default function ProfileNav() {
     return (
         <div className=" profile">
             <div className="nav-bar">
-                <div className="small-btn"><button>small</button></div>
-                <div className={navOpen ? "navigation-bar" : "navigation-bar hide"}>
+                <div className="small-btn"><button className="bars">
+                    <div className="bar"></div>
+                <div className="bar"></div>
+                <div className="bar"></div>
+                </button></div>
+                <div className={navOpen ? "navigation-bar hide" : "navigation-bar"}>
                     <button className={selectedNavItem === "Dashboard" ? "nav-btn selected-btn" : "nav-btn"} onClick={() => handleNavItemClick("Dashboard")}>
                         Dashboard
                     </button>
