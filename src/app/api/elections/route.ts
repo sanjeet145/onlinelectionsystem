@@ -30,7 +30,9 @@ export async function GET(req: NextRequest) {
             user = await Admin.findOne({ _id: decode.id });
             adminid= user.adminid;
         }
+        // console.log(user.adminId);
         const elections = await Election.find({ admin: adminid });
+        // console.log(elections);
         return NextResponse.json({
             elections
         })
