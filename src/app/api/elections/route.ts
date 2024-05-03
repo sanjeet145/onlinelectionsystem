@@ -21,13 +21,13 @@ export async function GET(req: NextRequest) {
         await dbConnect();
         const decode = await getDataFromCookie(req);
         let user;
-        if (decode.isAdmin) {
-            user = await Admin.findOne({ _id: decode.id });
-        }
-        else {
-            user = await User.findOne({ _id: decode.id });
+        user = await Admin.findOne({ _id: decode.id });
+        user = await User.findOne({ _id: decode.id });
+        // if (decode.isAdmin) {
+        // }
+        // else {
 
-        }
+        // }
         const adminid = user.adminid;
         const elections = await Election.find({ admin: adminid });
         console.log(elections);
