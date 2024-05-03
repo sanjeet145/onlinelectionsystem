@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 import BecomeCandidate from "./becomecandidate";
-import '../../Admin/navigation.css';
 import ProfileContents from "./contents";
 
 export default function ProfileDashboard(){
