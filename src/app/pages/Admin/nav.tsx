@@ -25,8 +25,8 @@ export default function ProfileNav() {
 
     useEffect(() => {
         const navbutton = document.querySelector('.small-btn');
-        navbutton?.classList.toggle("close");
         const handleClick = () => {
+            navbutton?.classList.toggle("close");
             setNavOpen(!navOpen);
         };
 

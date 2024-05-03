@@ -183,6 +183,7 @@ tr {
     min-width: 200px;
     background-color: var(--color5);
     border-top-right-radius: 50px;
+    z-index: 1;
 }
 
 .nav-btn {
@@ -216,7 +217,10 @@ tr {
 
 .admin-content {
     margin-top: 50px;
+    width: 100vw;
+    overflow-wrap: break-word;
 }
+
 
 @media (max-width:700px) {
     .nav-bar {
