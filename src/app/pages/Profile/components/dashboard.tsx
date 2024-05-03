@@ -2,8 +2,8 @@
 
 import { useState } from "react";
 import BecomeCandidate from "./becomecandidate";
-import Elections from "./elections";
 import '../../Admin/navigation.css';
+import ProfileContents from "./contents";
 
 export default function ProfileDashboard(){
     const [opencandidate,setcandidate] = useState(false);
@@ -25,7 +25,7 @@ export default function ProfileDashboard(){
     }
     const user={
         name:"ram",
-        isCandidate:false,
+        isCandidate:true,
         isVoted:false,
     }
 
@@ -33,6 +33,7 @@ export default function ProfileDashboard(){
         <>
         <button className="Btn" onClick={openCandidate}>Become Candidate</button>
         <button className="Btn" onClick={openAdmin}>Change Admin</button>
+        {user.isCandidate? <button className="Btn">Update Candidate</button> :""}
         <div className={opencandidate ? "small-form" : "small-form hide"}>
             <BecomeCandidate/>
         </div>
@@ -45,7 +46,7 @@ export default function ProfileDashboard(){
                 <button className="Btn">Change</button>
             </form>
         </div>
-        <Elections/>
+        <ProfileContents/>
         </>
     )
 }

@@ -85,6 +85,7 @@ export default function ProfileNav() {
                 </div>
             </div>
 
+            <div className="admin-content">
             {selectedNavItem === "Dashboard" && <AdminDashboard />}
             {selectedNavItem === "Candidates" && <AdminCandidate />}
             {selectedNavItem === "Voters" && <Voters />}
@@ -92,6 +93,7 @@ export default function ProfileNav() {
             {selectedNavItem === "NewVoters" && <AddNewVoter />}
             {selectedNavItem === "NewElection" && <NewElection />}
             {selectedNavItem === "PreviousElections" && <PreviousElections />}
+            </div>
             {/* {selectedNavItem === "Logout" && <LogoutContent />} */}
         </div>
     );

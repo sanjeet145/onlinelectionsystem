@@ -7,8 +7,8 @@ export default async function ProfileContents(){
 
     return(
         <div className="contents-section">
-            <h1>ELections</h1>
             <Elections/>
+            
         </div>
     )
 }
