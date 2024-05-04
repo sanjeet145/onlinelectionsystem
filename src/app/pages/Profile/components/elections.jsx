@@ -23,7 +23,7 @@ export default function Elections() {
     return (
         <div className="main-content">
             <div className="pending">
-                {/* <h1 className="lists-head">Elections</h1> */}
+                <h1 className="lists-head">Elections</h1>
                 <div className="flex-container">
                     {elections ?
                         <>

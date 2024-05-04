@@ -1,5 +1,3 @@
-"use client"
-
 import Elections from "./elections";
 
 export default async function ProfileContents(){

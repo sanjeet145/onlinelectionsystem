@@ -1,5 +1,3 @@
-"use client"
-
 import { useState } from "react";
 import BecomeCandidate from "./becomecandidate";
 import ProfileContents from "./contents";
@@ -45,7 +43,7 @@ export default function ProfileDashboard(){
                 <button className="Btn">Change</button>
             </form>
         </div>
-        <ProfileContents/>
+        {/* <ProfileContents/> */}
         </>
     )
 }
