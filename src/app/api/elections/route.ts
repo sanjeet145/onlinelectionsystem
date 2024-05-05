@@ -8,8 +8,8 @@ import { NextRequest, NextResponse } from "next/server";
 export async function POST(req: NextRequest) {
     await dbConnect();
     const reqBody = await req.json();
-    const { electionname, enddate, admin } = reqBody.form;
-    const election = new Election({ electionname, enddate, admin });
+    const { electionname, enddate, admin,electionid } = reqBody.form;
+    const election = new Election({ electionname, enddate, adminId:admin, electionId:electionid });
     await election.save();
     return NextResponse.json({
         message: "details registered"
@@ -28,9 +28,9 @@ export async function GET(req: NextRequest) {
         }
         else {
             user = await Admin.findOne({ _id: decode.id });
-            adminid= user.adminid;
+            adminid= user.adminId;
         }
-        // console.log(user.adminId);
+        // console.log(user);
         const elections = await Election.find({ admin: adminid });
         // console.log(elections);
         return NextResponse.json({

@@ -9,6 +9,7 @@ export default function NewElection() {
         electionname: "",
         enddate: "",
         admin: "",
+        electionid:"",
     });
     const inputEvent = (event: any) => {
         const { name, value } = event.target;
@@ -47,30 +48,36 @@ export default function NewElection() {
 
     return (
         <div className="main-content">
-        <form className="formc" method="POST" onSubmit={onsubmit}>
-            <div className="ename">
-                <p>Election Name</p>
-                <input type="text"
-                    name="electionname"
-                    onChange={inputEvent}
-                    value={form.electionname} /></div>
-            <div className="enddate">
-                <p>End Date</p>
-                <div className="enddate">
-                    <input type="date"
-                        name="enddate"
+            <form className="formc" method="POST" onSubmit={onsubmit}>
+                <div className="ename">
+                    <p>Election Name</p>
+                    <input type="text"
+                        name="electionname"
                         onChange={inputEvent}
-                        value={form.enddate} />
+                        value={form.electionname} /></div>
+                <div className="enddate">
+                    <p>End Date</p>
+                    <div className="enddate">
+                        <input type="date"
+                            name="enddate"
+                            onChange={inputEvent}
+                            value={form.enddate} />
+                    </div>
                 </div>
-            </div>
-            <div className="Admin">
-                <p>Admin</p>
-                <input type="text"
-                    name="admin"
-                    onChange={inputEvent}
-                    value={form.admin} /></div>
-            <button className="Btn" type="submit">Register</button>
-        </form>
+                <div className="Admin">
+                    <p>Admin Id</p>
+                    <input type="text"
+                        name="admin"
+                        onChange={inputEvent}
+                        value={form.admin} /></div>
+                <div className="Election Id">
+                    <p>Election Id</p>
+                    <input type="text"
+                        name="electionid"
+                        onChange={inputEvent}
+                        value={form.electionid} /></div>
+                <button className="Btn" type="submit">Register</button>
+            </form>
         </div>
     )
 }

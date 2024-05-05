@@ -10,7 +10,11 @@ const electionSchema = new mongoose.Schema({
         type:Date,
         required:true,
     },
-    admin:{
+    adminId:{
+        type:String,
+        required:true,
+    },
+    electionId:{
         type:String,
         required:true,
     },

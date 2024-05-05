@@ -1,49 +1,49 @@
 import { useState } from "react";
 import BecomeCandidate from "./becomecandidate";
-import ProfileContents from "./contents";
+import { useRouter } from "next/navigation";
 
-export default function ProfileDashboard(){
-    const [opencandidate,setcandidate] = useState(false);
-    const [openadmin,setadmin] = useState(false);
-    const openCandidate=()=>{
-        if(openadmin){
+export default function ProfileDashboard() {
+    const router = useRouter(); 
+    const [opencandidate, setcandidate] = useState(false);
+    const [openadmin, setadmin] = useState(false);
+    const openCandidate = () => {
+        if (openadmin) {
             openAdmin();
         }
         setcandidate(!opencandidate);
     }
-    const openAdmin=()=>{
-        if(opencandidate){
+    const openAdmin = () => {
+        if (opencandidate) {
             openCandidate();
         }
         setadmin(!openadmin);
     }
-    const inputEvent =(e:any)=>{
-        console.log(e)
+    const user = {
+        isCandidate: true
     }
-    const user={
-        name:"ram",
-        isCandidate:true,
-        isVoted:false,
+    const deleteuser = async()=>{
+        const con= confirm("Do you want to delete your account");
+        if(con){
+            const response = await fetch("/api/users/deleteuser");
+            const data = await response.json();
+                alert(data.message);
+            if(data.success){
+                router.push('/');
+            }
+        }
+        else{
+            alert("don't want")
+        }
     }
 
-    return(
+    return (
         <>
-        <button className="Btn" onClick={openCandidate}>Become Candidate</button>
-        <button className="Btn" onClick={openAdmin}>Change Admin</button>
-        {user.isCandidate? <button className="Btn">Update Candidate</button> :""}
-        <div className={opencandidate ? "small-form" : "small-form hide"}>
-            <BecomeCandidate/>
-        </div>
-        <div className={openadmin ? "small-form" : " small-form hide"}>
-            <form>
-                <div>
-                    <p>New Admin ID</p>
-                    <input type="text" onChange={inputEvent} name="adminId" />
-                </div>
-                <button className="Btn">Change</button>
-            </form>
-        </div>
-        {/* <ProfileContents/> */}
+            <button className="Btn" onClick={openCandidate}>Become Candidate</button>
+            <button className="Btn" onClick={deleteuser}>Delete Account</button>
+            {user.isCandidate ? <button className="Btn">Update Candidate</button> : ""}
+            <div className={opencandidate ? "small-form" : "small-form hide"}>
+                <BecomeCandidate />
+            </div>
         </>
     )
 }

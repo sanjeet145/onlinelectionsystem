@@ -27,18 +27,16 @@ export default function BecomeCandidate(){
                 alert("Please fill all the fields");
             }
             else {
-                console.log(form.description);
-                alert("you are now candidate");
-                // const response = await fetch("/api/admin", {
-                //     method: 'POST',
-                //     headers: { 'Content-Type': 'application/json' },
-                //     body: JSON.stringify({ form }),
-                // });
+                const response = await fetch("/api/users/candidate", {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ form }),
+                });
 
-                // const data = await response.json();
-                // if(data){
-                //     alert(data.message);
-                // }
+                const data = await response.json();
+                if(data){
+                    alert(data.message);
+                }
                 // if(data.success){
                 //     router.push('/login');
                 // }
