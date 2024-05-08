@@ -8,8 +8,8 @@ const adminSchema = new mongoose.Schema({
     },
     adminId:{
         type:String,
-        required:true,
-        unique:true,
+        // required:true,
+        // unique:true,
     },
     pass:{
         type:String,

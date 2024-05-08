@@ -6,14 +6,20 @@ import { getDataFromCookie } from './helpers/getDataFromCookie';
 
 export async function middleware(request: NextRequest) {
     const path = request.nextUrl.pathname;
-    const isPublicPath = path === '/login' || path=== '/register' || path === '/'
+    const isPublicPath = path === '/login' || path=== '/register' || path === '/' || path === '/pages/registeradmin'
 
     const session = request.cookies.get('session')?.value || ""
     if(isPublicPath && session){
         console.log(getDataFromCookie(request));
         // await dbConnect();
         // const admin = await Admin.findOne({session.username})
-        return NextResponse.redirect(new URL('/pages/Admin' , request.nextUrl))
+        // const decode = await getDataFromCookie(request);
+        // if (decode.isAdmin){
+        // }
+        return NextResponse.redirect(new URL('/pages/Profile' , request.nextUrl))
+        // else{
+        //   return NextResponse.redirect(new URL('/pages/Profile' , request.nextUrl))
+        // }
     }
     if(!isPublicPath && !session){
         return NextResponse.redirect(new URL('/login' , request.nextUrl))
@@ -26,6 +32,7 @@ export const config = {
     '/',
     '/login',
     '/register',
-    '/pages/Admin'
+    '/pages/Admin',
+    '/pages/registeradmin'
   ],
 }

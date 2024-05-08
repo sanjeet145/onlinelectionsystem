@@ -7,13 +7,21 @@ import { NextRequest, NextResponse } from "next/server";
 
 export async function POST(req: NextRequest) {
     await dbConnect();
-    const reqBody = await req.json();
-    const { electionname, enddate, admin,electionid } = reqBody.form;
-    const election = new Election({ electionname, enddate, adminId:admin, electionId:electionid });
+    try {
+        const reqBody = await req.json();
+    const { electionname, enddate,electionid } = reqBody.form;
+    const decode = await getDataFromCookie(req);
+    const admin = await Admin.findOne({_id:decode.id});
+    const election = new Election({ electionname, enddate, adminId:admin.adminId, electionId:electionid });
     await election.save();
     return NextResponse.json({
-        message: "details registered"
+        message: "Details registered"
     })
+    } catch (error) {
+        return NextResponse.json({
+            message: "Unable to register"
+        })
+    }
 }
 
 export async function GET(req: NextRequest) {

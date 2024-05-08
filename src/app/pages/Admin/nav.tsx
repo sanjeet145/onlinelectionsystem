@@ -45,11 +45,25 @@ export default function ProfileNav() {
         try {
             const response = await fetch("/api/users/logout");
             const data = await response.json();
-            if(data){
+            if (data) {
                 router.push('/');
             }
         } catch (error) {
             console.log("error");
+        }
+    }
+    const deleteuser = async () => {
+        const con = confirm("Do you want to delete your account");
+        if (con) {
+            const response = await fetch("/api/users/deleteuser");
+            const data = await response.json();
+            alert(data.message);
+            if (data.success) {
+                router.push('/');
+            }
+        }
+        else {
+            alert("don't want")
         }
     }
 
@@ -58,8 +72,8 @@ export default function ProfileNav() {
             <div className="nav-bar">
                 <div className="small-btn"><button className="bars">
                     <div className="bar"></div>
-                <div className="bar"></div>
-                <div className="bar"></div>
+                    <div className="bar"></div>
+                    <div className="bar"></div>
                 </button></div>
                 <div className={navOpen ? "navigation-bar hide" : "navigation-bar"}>
                     <button className={selectedNavItem === "Dashboard" ? "nav-btn selected-btn" : "nav-btn"} onClick={() => handleNavItemClick("Dashboard")}>
@@ -83,6 +97,8 @@ export default function ProfileNav() {
                     <button className={selectedNavItem === "PreviousElections" ? "nav-btn selected-btn" : "nav-btn"} onClick={() => handleNavItemClick("PreviousElections")}>
                         Previous Elections
                     </button>
+                    <button className={selectedNavItem === "deleteuser" ? "nav-btn selected-btn" : "nav-btn"} onClick={deleteuser}>Delete Account</button>
+
                     <button className={selectedNavItem === "Logout" ? "nav-btn selected-btn" : "nav-btn"} onClick={logout}>
                         Log out
                     </button>
@@ -90,13 +106,13 @@ export default function ProfileNav() {
             </div>
 
             <div className="admin-content">
-            {selectedNavItem === "Dashboard" && <AdminDashboard />}
-            {selectedNavItem === "Candidates" && <AdminCandidate />}
-            {selectedNavItem === "Voters" && <Voters />}
-            {selectedNavItem === "PendingVoters" && <PendingVoters />}
-            {selectedNavItem === "NewVoters" && <AddNewVoter />}
-            {selectedNavItem === "NewElection" && <NewElection />}
-            {selectedNavItem === "PreviousElections" && <PreviousElections />}
+                {selectedNavItem === "Dashboard" && <AdminDashboard />}
+                {selectedNavItem === "Candidates" && <AdminCandidate />}
+                {selectedNavItem === "Voters" && <Voters />}
+                {selectedNavItem === "PendingVoters" && <PendingVoters />}
+                {selectedNavItem === "NewVoters" && <AddNewVoter />}
+                {selectedNavItem === "NewElection" && <NewElection />}
+                {selectedNavItem === "PreviousElections" && <PreviousElections />}
             </div>
             {/* {selectedNavItem === "Logout" && <LogoutContent />} */}
         </div>

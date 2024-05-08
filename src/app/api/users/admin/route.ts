@@ -8,7 +8,7 @@ export async function POST(req:NextRequest){
     const reqBody = await req.json();
         const { voter,pass } = reqBody.form;
         const voterid = voter.toLowerCase();
-        const user = await Admin.findOne({adminid: voterid});
+        const user = await Admin.findOne({adminId: voterid});
         if(user){
             if(pass==user.pass){
                 const response= NextResponse.json({

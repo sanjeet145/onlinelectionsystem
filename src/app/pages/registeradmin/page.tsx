@@ -11,7 +11,7 @@ export default function RegisterForm() {
         cfmpass: "",
         passKey: "",
         mobile: "",
-        adminId: "",
+        adminid: "",
     });
     const [loading, setloading] = useState(false);
     const inputEvent = (event: any) => {
@@ -27,7 +27,7 @@ export default function RegisterForm() {
         setloading(!loading);
         event.preventDefault();
         try {
-            if (!form.fname || !form.pass || !form.cfmpass || !form.mobile || !form.passKey || !form.adminId) {
+            if (!form.fname || !form.pass || !form.cfmpass || !form.mobile || !form.passKey || !form.adminid) {
                 alert("Please fill all the fields");
             }
             else {
@@ -112,9 +112,9 @@ export default function RegisterForm() {
             <div className="adminid">
                 <p>Admin Id</p>
                 <input type="text"
-                    name="adminId"
+                    name="adminid"
                     onChange={inputEvent}
-                    value={form.adminId} /></div>
+                    value={form.adminid} /></div>
             <div className="Number">
                 <p>Mobile Number</p>
                 <input type="number"

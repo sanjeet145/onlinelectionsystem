@@ -8,7 +8,6 @@ export default function NewElection() {
     const [form, setForm] = useState({
         electionname: "",
         enddate: "",
-        admin: "",
         electionid:"",
     });
     const inputEvent = (event: any) => {
@@ -23,7 +22,7 @@ export default function NewElection() {
     const onsubmit = async (event: any) => {
         event.preventDefault();
         try {
-            if (!form.electionname || !form.enddate || !form.admin) {
+            if (!form.electionname || !form.enddate) {
                 alert("Please fill all the fields");
             }
             else {
@@ -64,12 +63,6 @@ export default function NewElection() {
                             value={form.enddate} />
                     </div>
                 </div>
-                <div className="Admin">
-                    <p>Admin Id</p>
-                    <input type="text"
-                        name="admin"
-                        onChange={inputEvent}
-                        value={form.admin} /></div>
                 <div className="Election Id">
                     <p>Election Id</p>
                     <input type="text"
