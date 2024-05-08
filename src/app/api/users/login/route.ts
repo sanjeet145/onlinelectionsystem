@@ -3,7 +3,6 @@ import User from '@/models/user';
 import { NextRequest, NextResponse } from 'next/server';
 import jwt from 'jsonwebtoken';
 
-
 export async function POST(req: NextRequest) {
     await dbConnect();
     const reqBody = await req.json();

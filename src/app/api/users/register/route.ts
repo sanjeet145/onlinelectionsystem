@@ -10,19 +10,19 @@ import { NextRequest, NextResponse } from 'next/server';
 export async function POST(request: NextRequest) {
     try {
         const reqBody = await request.json();
-        const { fname, pass, voterId, mobile, adminId } = reqBody.form;
+        const { fname, pass, voterId, mobile, adminid } = reqBody.form;
         const voterid = voterId.toLowerCase();
-        const adminID = adminId.toLowerCase();
+        const adminId = adminid.toLowerCase();
         await dbConnect();
-        const admin = await Admin.findOne({ adminid: adminID });
-        if (adminID === admin.adminid) {
+        const admin = await Admin.findOne({ adminId});
+        if (adminId === admin.adminId) {
             if (await User.findOne({ voterid: voterId })) {
                 return NextResponse.json({
                     message: "User already exist",
                     success: false
                 });
             }
-            const elections = await Election.find({admin:adminID});
+            const elections = await Election.find({adminId});
         const elec = elections.map((election: {
             _id: any;
     }) => (
