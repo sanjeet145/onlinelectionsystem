@@ -20,6 +20,20 @@ export default function Elections() {
         fetchData();
     }, []);
 
+    const [opencandidate, setcandidate] = useState(false);
+    const [openadmin, setadmin] = useState(false);
+    const openCandidate = () => {
+        if (openadmin) {
+            openAdmin();
+        }
+        setcandidate(!opencandidate);
+    }
+    const openAdmin = () => {
+        if (opencandidate) {
+            openCandidate();
+        }
+        setadmin(!openadmin);
+    }
     return (
         <div className="main-content">
             <div className="pending">
@@ -28,18 +42,23 @@ export default function Elections() {
                     {elections ?
                         <>
                             {
-                            elections.map(election => (
-                                <div className="prev-card" key={election.id}>
-                                    <h1>Election Name: <a>{election.electionname}</a></h1>
-                                    <h1>Election Date: <a>{new Date(election.enddate).toLocaleDateString('en-GB', {
-                                        day: '2-digit',
-                                        month: 'short',
-                                        year: 'numeric'
-                                    })}</a></h1>
-                                    <h1><a>{election.admin}</a> Won</h1>
-                                </div>
-                            ))
-                        }
+                                elections.map(election => (
+                                    <div className="prev-card" key={election.id}>
+                                        <h1>Election Name: <a>{election.electionname}</a></h1>
+                                        <h1>Election Date: <a>{new Date(election.enddate).toLocaleDateString('en-GB', {
+                                            day: '2-digit',
+                                            month: 'short',
+                                            year: 'numeric'
+                                        })}</a></h1>
+                                        <h1><a>{election.admin}</a> Won</h1>
+                                        <button className="Btn" onClick={opencandidate}>Vote</button>
+                                        <div className={opencandidate ? "small-form" : "small-form hide"}>
+                                            <h1>Vote</h1>
+                                        </div>
+
+                                    </div>
+                                ))
+                            }
                         </>
                         : <>
                             <h2>loading...</h2>
