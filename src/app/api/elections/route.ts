@@ -12,6 +12,12 @@ export async function POST(req: NextRequest) {
     const { electionname, enddate,electionid } = reqBody.form;
     const decode = await getDataFromCookie(req);
     const admin = await Admin.findOne({_id:decode.id});
+    const ele= await Election.findOne({adminId:admin.adminId, electionId:electionid});
+    if(ele){
+        return NextResponse.json({
+            message: "Change Election Id"
+        })
+    }
     const election = new Election({ electionname, enddate, adminId:admin.adminId, electionId:electionid });
     await election.save();
     return NextResponse.json({
@@ -39,7 +45,11 @@ export async function GET(req: NextRequest) {
             adminid= user.adminId;
         }
         // console.log(user);
-        const elections = await Election.find({ admin: adminid });
+        // adminid="admin";
+        const elections = await Election.find({ adminId: adminid });
+        // console.log("ele");
+        // const elections = await Election.find();
+        // console.log("after");
         // console.log(elections);
         return NextResponse.json({
             elections
