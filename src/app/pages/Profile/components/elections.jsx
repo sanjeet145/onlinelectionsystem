@@ -1,6 +1,7 @@
 "use client"
 
 import { useEffect, useState } from "react";
+import BecomeCandidate from "./becomecandidate";
 
 export default function Elections() {
 
@@ -21,18 +22,18 @@ export default function Elections() {
     }, []);
 
     const [opencandidate, setcandidate] = useState(false);
-    const [openadmin, setadmin] = useState(false);
-    const openCandidate = () => {
-        if (openadmin) {
-            openAdmin();
-        }
+    let candidates ;
+    const openCandidate = async(electionID, adminID) => {
         setcandidate(!opencandidate);
-    }
-    const openAdmin = () => {
-        if (opencandidate) {
-            openCandidate();
-        }
-        setadmin(!openadmin);
+        console.log(electionID);
+        const requestData = {
+            electionid: 'ele',
+            adminid:"admin",
+        };
+        const queryParams = new URLSearchParams(requestData);
+        const response = await fetch(`/api/users/candidate?${queryParams}`);
+        candidates = await response.json();
+        
     }
     return (
         <div className="main-content">
@@ -51,9 +52,14 @@ export default function Elections() {
                                             year: 'numeric'
                                         })}</a></h1>
                                         <h1><a>{election.admin}</a> Won</h1>
-                                        <button className="Btn" onClick={opencandidate}>Vote</button>
+                                        {/* <button className="Btn" onClick={openCandidate(election.electionId,election.adminId)}>Vote</button> */}
+                                        <button className="Btn" onClick={() => openCandidate(election.electionId, election.adminId)}>Vote</button>
+
                                         <div className={opencandidate ? "small-form" : "small-form hide"}>
-                                            <h1>Vote</h1>
+                                            {/* {candidates.map(candidate => (
+                                            <h1>{candidate.fname}</h1>
+                                            ))} */}
+                                            <h1>vote</h1>
                                         </div>
 
                                     </div>

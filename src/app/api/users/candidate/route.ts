@@ -3,7 +3,7 @@ import { getDataFromCookie } from "@/helpers/getDataFromCookie";
 import { NextRequest, NextResponse } from "next/server";
 import User from "@/models/user";
 import Candidate from "@/models/candidate";
-import Election from "@/models/election";
+import { NextApiRequest, NextApiResponse } from 'next';
 
 export async function POST(request: NextRequest) {
     await dbConnect();
@@ -45,6 +45,28 @@ export async function POST(request: NextRequest) {
         return NextResponse.json({
             message: "Something went wrong",
             success: "false",
+        })
+    }
+}
+
+export async function GET(req: NextApiRequest) {
+    const url = new URL(req.url, `http://${req.headers.host}`); // Construct full URL
+    const searchParams = url.searchParams;
+    const electionid = searchParams.get('electionid') as string; // This will contain all query parameters
+    const adminid = searchParams.get('adminid') as string; // This will contain all query parameters
+    await dbConnect();
+    // get the adminid and electionid
+    // const electionid="ele";
+    // const adminid="admin";
+    const candidates = await Candidate.find({ electionId: electionid, adminId: adminid });
+    if (candidates) {
+        return NextResponse.json({
+            candidates
+        })
+    }
+    else{
+        return NextResponse.json({
+            message: "No candidates found"
         })
     }
 }
