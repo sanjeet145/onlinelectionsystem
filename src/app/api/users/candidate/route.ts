@@ -3,7 +3,6 @@ import { getDataFromCookie } from "@/helpers/getDataFromCookie";
 import { NextRequest, NextResponse } from "next/server";
 import User from "@/models/user";
 import Candidate from "@/models/candidate";
-import { NextApiRequest, NextApiResponse } from 'next';
 
 export async function POST(request: NextRequest) {
     await dbConnect();
@@ -49,24 +48,30 @@ export async function POST(request: NextRequest) {
     }
 }
 
-export async function GET(req: NextApiRequest) {
-    const url = req.url || '';
-    const host  = req.headers.host || 'localhost';
-    const fulurl = new URL(url, `http://${host}`); // Construct full URL
-    const searchParams = fulurl.searchParams;
-    const electionid = searchParams.get('electionid') as string; // This will contain all query parameters
-    const adminid = searchParams.get('adminid') as string; // This will contain all query parameters
-    await dbConnect();
+export async function GET(req: NextRequest) {
+
     // get the adminid and electionid
-    // const electionid="ele";
-    // const adminid="admin";
-    const candidates = await Candidate.find({ electionId: electionid, adminId: adminid });
+    const url = req.url || '';
+    const queryString = url.split('?', 2);
+    const cleanedQueryString = queryString[1].substring(0);
+    const keyValuePairs = cleanedQueryString.split('&');
+    let adminId, electionId;
+    keyValuePairs.forEach(pair => {
+        const [key, value] = pair.split('=');
+        if (key === 'adminid') {
+            adminId = value;
+        } else if (key === 'electionid') {
+            electionId = value;
+        }
+    });
+    await dbConnect();
+    const candidates = await Candidate.find({ electionId: electionId, adminId: adminId });
     if (candidates) {
         return NextResponse.json({
             candidates
         })
     }
-    else{
+    else {
         return NextResponse.json({
             message: "No candidates found"
         })
