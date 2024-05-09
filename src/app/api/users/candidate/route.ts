@@ -50,8 +50,10 @@ export async function POST(request: NextRequest) {
 }
 
 export async function GET(req: NextApiRequest) {
-    const url = new URL(req.url, `http://${req.headers.host}`); // Construct full URL
-    const searchParams = url.searchParams;
+    const url = req.url || '';
+    const host  = req.headers.host || 'localhost';
+    const fulurl = new URL(url, `htt://${host}`); // Construct full URL
+    const searchParams = fulurl.searchParams;
     const electionid = searchParams.get('electionid') as string; // This will contain all query parameters
     const adminid = searchParams.get('adminid') as string; // This will contain all query parameters
     await dbConnect();
