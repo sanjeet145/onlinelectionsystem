@@ -24,7 +24,6 @@ export async function middleware(request: NextRequest) {
       }
     }
     else {
-      // For non-public paths, redirect to login if session is not present
       if (!session) {
         return NextResponse.redirect(new URL('/login', request.nextUrl));
       } else {
@@ -37,10 +36,19 @@ export async function middleware(request: NextRequest) {
       }
     }
   }
+  
 
+  //if session not available
+
+  if (!session) {
+    if (!isPublicPath) {
+      return NextResponse.redirect(new URL('/', request.nextUrl));
+
+    }
+    return null;
+
+  }
   // If no redirection is necessary, return null to allow the request to proceed
-  return null;
-
 
 
   // if(isPublicPath && session){
