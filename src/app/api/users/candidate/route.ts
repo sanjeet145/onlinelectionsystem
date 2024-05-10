@@ -9,10 +9,9 @@ export async function POST(request: NextRequest) {
     try {
         const reqBody = await request.json();
         const { electionid, description } = reqBody.form;
-        console.log(electionid);
+        // console.log(electionid);
         const decode = await getDataFromCookie(request);
         const user = await User.findOne({ _id: decode.id });
-
         const candidate = await Candidate.findOne({ electionId: electionid, voterid: user.voterid, adminId: user.adminId });
         if (candidate) {
             if (candidate.isRequested) {
@@ -29,9 +28,9 @@ export async function POST(request: NextRequest) {
             })
         }
         else {
-            const voter = user.voterid;
+            const voterid = user.voterid;
             const admin = user.adminId;
-            const candidat = new Candidate({ voter, electionid, admin, description });
+            const candidat = new Candidate({ voterid, electionId: electionid, adminId: admin, description });
             await candidat.save();
             return NextResponse.json({
                 message: "Candidate request sent",
@@ -40,7 +39,6 @@ export async function POST(request: NextRequest) {
         }
 
     } catch (error) {
-        console.log(error);
         return NextResponse.json({
             message: "Something went wrong",
             success: "false",
@@ -67,8 +65,30 @@ export async function GET(req: NextRequest) {
     await dbConnect();
     const candidates = await Candidate.find({ electionId: electionId, adminId: adminId });
     if (candidates) {
+        const userPromises = candidates.map(async (candidate: { voterid: any; }) =>(
+            await User.findOne({voterid: candidate.voterid})
+            
+        ))
+        // const user = candidates.map(async (candidate: { voterid: any; }) => await User.findOne({ voterid: "user" }))
+        const cand = await Promise.all(userPromises);
+        const users = cand.map((voter: {
+            isAdmin: Boolean;
+            isVerified:Boolean;
+            isCandidate: Boolean;
+            isVoted: Boolean; mobile: any; voterid: any; fname: any; 
+    }) => (
+            {
+                fname: voter.fname,
+                voterid: voter.voterid,
+                mobile: voter.mobile,
+                isVoted: voter.isVoted,
+                isCandidate: voter.isCandidate,
+                isAdmin:voter.isAdmin,
+                isVerified:voter.isVerified,
+            }
+        ))
         return NextResponse.json({
-            candidates
+            users
         })
     }
     else {
