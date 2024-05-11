@@ -8,6 +8,7 @@ export default function Elections() {
     const [elections, setelections] = useState([]);
     const [openform, setOpenForm] = useState(false);
     const [candidates, setcandidates] = useState([]);
+    const [electionAdminid, setelectionAdminId] = useState([]);
     const [loading, setLoading] = useState(false);
     const [selectedElection, setSelectedElection] = useState(null);
 
@@ -24,6 +25,7 @@ export default function Elections() {
                     const response = await fetch(`/api/users/candidate?${queryParams}`);
                     const data = await response.json();
                     setcandidates(data.users);
+                    setelectionAdminId(requestData);
                     setLoading(false);
                 } catch (error) {
                     console.error('Error fetching candidates');
@@ -39,8 +41,30 @@ export default function Elections() {
         setOpenForm(!openform);
         setSelectedElection({ electionID, adminID });
     }
+    const vote = (electionID, adminID, voterid) => {
+        console.log("electionid ", electionID, " adminid-", adminID, " voterid-", voterid);
+    }
 
     useEffect(() => {
+        const navbutton = document.querySelector('.close-form');
+        const handleClick = () => {
+            // navbutton?.classList.toggle("close");
+            setOpenForm(!openform);
+            
+        };
+        if (navbutton) {
+            navbutton.addEventListener('click', handleClick);
+        }
+
+        return () => {
+            if (navbutton) {
+                navbutton.removeEventListener('click', handleClick);
+            }
+        };
+    }, [openform]);
+    useEffect(() => {
+
+
         const fetchData = async () => {
             try {
                 const response = await fetch('/api/elections');
@@ -68,30 +92,43 @@ export default function Elections() {
                                     year: 'numeric'
                                 })}</a></h1>
                                 <h1><a>{election.admin}</a> Won</h1>
-                                <button className="Btn" onClick={() => openCandidate(election.electionId, election.adminId)}>Vote</button>
-                                {openform?
-                                <div className="small-form">
-                                {!loading ? (
-                                    candidates && candidates.length > 0 ? (
-                                        candidates.map(candidate => {
-                                            return (
+                                <button className="Btn" onClick={() => openCandidate(election.electionId, election.adminId)}>Candidates</button>
+                                {openform ?
+                                    < div className="small-form">
+                                        {!loading ? (
+                                            candidates && candidates.length > 0 ? (
                                                 <>
-                                                <h1 key={candidate.id}>{candidate.voterid}</h1>
-                                                <h1>{candidate.fname}</h1>
+                                                    <div className="close-form bars">
+                                                        <div className="bar"></div>
+                                                        <div className="bar"></div>
+                                                    </div>
+                                                    <table className="candidate-vote-card">
+                                                        <tr>
+                                                            <th>Name</th>
+                                                            <th>Voter Id</th>
+                                                            <th>Vote</th>
+                                                        </tr>
+                                                        {candidates.map(candidate => {
+                                                            return (
+                                                                <tr className="candidate-vote">
+                                                                    <td>{candidate.fname}</td>
+                                                                    <td key={candidate.id}>{candidate.voterid}</td>
+                                                                    <td><button className="vote-btn" onClick={() => vote(electionAdminid.electionid, electionAdminid.adminid, candidate.voterid)}>Vote</button></td>
+                                                                </tr>
+                                                            );
+                                                        })}
+                                                    </table>
                                                 </>
-                                            );
-                                        })
-                                    ) : (
-                                        <>
-                                            <h1>No candidates found</h1>
-                                            {console.log(candidates)}
-                                        </>
-                                    )
-                                ) : (
-                                    <h1>Loading...</h1>
-                                )}
-                            </div>
-                            :""
+                                            ) : (
+                                                <>
+                                                    <h1>No candidates found</h1>
+                                                </>
+                                            )
+                                        ) : (
+                                            <h1>Loading...</h1>
+                                        )}
+                                    </div>
+                                    : ""
                                 }
                             </div>
                         ))
