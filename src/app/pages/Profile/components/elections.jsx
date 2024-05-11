@@ -110,7 +110,7 @@ export default function Elections() {
                                                         </tr>
                                                         {candidates.map(candidate => {
                                                             return (
-                                                                <tr className="candidate-vote">
+                                                                <tr key={candidate.voterid} className="candidate-vote">
                                                                     <td>{candidate.fname}</td>
                                                                     <td key={candidate.id}>{candidate.voterid}</td>
                                                                     <td><button className="vote-btn" onClick={() => vote(electionAdminid.electionid, electionAdminid.adminid, candidate.voterid)}>Vote</button></td>
