@@ -1,7 +1,6 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import BecomeCandidate from "./becomecandidate";
 import { useRouter } from "next/navigation";
-import { getDataFromCookie } from "@/helpers/getDataFromCookie";
 
 export default function ProfileDashboard() {
     const router = useRouter(); 
@@ -50,12 +49,34 @@ export default function ProfileDashboard() {
             console.log("error");
         }
     }
+    useEffect(() => {
+        const navbutton = document.querySelector('.close-form');
+        const handleClick = () => {
+            setcandidate(false);
+        };
+        if (navbutton) {
+            navbutton.addEventListener('click', handleClick);
+        }
+
+        return () => {
+            if (navbutton) {
+                navbutton.removeEventListener('click', handleClick);
+            }
+        };
+    }, [opencandidate]);
 
     return (
         <>
             <button className="Btn" onClick={openCandidate}>Become Candidate</button>
             <button className="Btn" onClick={deleteuser}>Delete Account</button>
             {isCandidate ? <button className="Btn">Update Candidate</button> : ""}
+            {opencandidate ?
+                    <div className="close-form bars">
+                        <div className="bar"></div>
+                        <div className="bar"></div>
+                    </div>
+                    : ""
+                }
             <button className="Btn" onClick={logout}>Log out</button>
             <div className={opencandidate ? "small-form" : "small-form hide"}>
                 <BecomeCandidate />

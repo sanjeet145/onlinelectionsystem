@@ -24,7 +24,7 @@ export default function Elections() {
                     const queryParams = new URLSearchParams(requestData);
                     const response = await fetch(`/api/users/candidate?${queryParams}`);
                     const data = await response.json();
-                    setcandidates(data.users);
+                    setcandidates(data.candidates);
                     setelectionAdminId(requestData);
                     setLoading(false);
                 } catch (error) {
@@ -41,16 +41,29 @@ export default function Elections() {
         setOpenForm(!openform);
         setSelectedElection({ electionID, adminID });
     }
-    const vote = (electionID, adminID, voterid) => {
-        console.log("electionid ", electionID, " adminid-", adminID, " voterid-", voterid);
+    const vote = async (electionID, adminID, voterid) => {
+        try {
+            const form = {
+                "electionid": electionID,
+                "adminid": adminID,
+                "voterid": voterid
+            }
+            const response = await fetch("/api/users/vote", {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ form }),
+            });
+            const data = await response.json();
+            alert(data.message);
+        } catch (error) {
+            alert("Something went wrong");
+        }
     }
 
     useEffect(() => {
         const navbutton = document.querySelector('.close-form');
         const handleClick = () => {
-            // navbutton?.classList.toggle("close");
-            setOpenForm(!openform);
-            
+            setOpenForm(false);
         };
         if (navbutton) {
             navbutton.addEventListener('click', handleClick);
@@ -81,6 +94,13 @@ export default function Elections() {
         <div className="main-content">
             <div className="pending">
                 <h1 className="lists-head">Elections</h1>
+                {openform ?
+                    <div className="close-form bars">
+                        <div className="bar"></div>
+                        <div className="bar"></div>
+                    </div>
+                    : ""
+                }
                 <div className="flex-container">
                     {elections.length > 0 ? (
                         elections.map(election => (
@@ -98,10 +118,6 @@ export default function Elections() {
                                         {!loading ? (
                                             candidates && candidates.length > 0 ? (
                                                 <>
-                                                    <div className="close-form bars">
-                                                        <div className="bar"></div>
-                                                        <div className="bar"></div>
-                                                    </div>
                                                     <table className="candidate-vote-card">
                                                         <tr>
                                                             <th>Name</th>
@@ -111,8 +127,8 @@ export default function Elections() {
                                                         {candidates.map(candidate => {
                                                             return (
                                                                 <tr key={candidate.voterid} className="candidate-vote">
-                                                                    <td>{candidate.fname}</td>
-                                                                    <td key={candidate.id}>{candidate.voterid}</td>
+                                                                    <td>{candidate.voterid}</td>
+                                                                    <td>{candidate.partyname}</td>
                                                                     <td><button className="vote-btn" onClick={() => vote(electionAdminid.electionid, electionAdminid.adminid, candidate.voterid)}>Vote</button></td>
                                                                 </tr>
                                                             );

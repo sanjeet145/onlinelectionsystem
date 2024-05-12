@@ -15,9 +15,20 @@ const candidateSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
+    partyname:{
+        type: String,
+        required:true
+    },
+    partysymbol:{
+        type: String,
+        required:true
+    },
     description: {
         type: String,
         required: true,
+    },
+    imgurl:{
+        type:String,
     },
     isRequested: {
         type: Boolean,

@@ -7,15 +7,14 @@ export default function CandidateCard(candidate: any) {
             {candidate ?
                 (
                     <>
-                        <Image src={candidate.img} alt={candidate.fname} width={300} height={300} />
+                        <Image loader={({ src }) => src} src={candidate.imgurl} alt={candidate.voterid} width={300} height={300} />
                         <div className="candidate-details">
-                            <p><a>Candidate Name:</a> {candidate.fname}</p>
-                            <p><a>Election Name:</a> BJP</p>
-                            <p><a>Description: </a>{candidate.voterid}</p>
+                            <p><a>Candidate Name:</a> {candidate.voterid}</p>
+                            <p><a>Party Name:</a> {candidate.partyname}</p>
+                            <p><a>Description: </a>{candidate.description}</p>
                         </div>
                         {candidate.isApproved ?
-                            <button className="Btn">Vote</button> : candidate.isAdmin ?
-                                <button className="Btn">Approve</button> : <p className="not-approved">Not Approved by the Admin</p>
+                            <button className="Btn">Vote</button> : <button className="Btn">Approve</button>
                         }
                     </>
                 ) :

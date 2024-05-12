@@ -18,9 +18,9 @@ export default function AdminCandidate() {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await fetch('/api/users/voters');
+                const response = await fetch('/api/users/candidate');
                 const data = await response.json();
-                setCandidates(data.users); // Update state with fetched data
+                setCandidates(data.candidates); // Update state with fetched data
             } catch (error) {
                 console.error('Error fetching candidates:', error);
             }

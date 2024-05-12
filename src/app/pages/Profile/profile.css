@@ -81,8 +81,15 @@
         text-align: center;
     }
 }
+.vote-btn{
+    color: red;
+    text-transform: capitalize;
+    font-weight: bold;
+}
 .bars{
+    position: absolute;
     width: 40px;
+    left: 50%;
 }
 .bar{
     height: 8px;
