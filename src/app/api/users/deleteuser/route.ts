@@ -1,4 +1,3 @@
-import Candidate from "@/app/pages/Candidate/page";
 import { dbConnect } from "@/db/dbConn";
 import { getDataFromCookie } from "@/helpers/getDataFromCookie";
 import Admin from "@/models/admin";
