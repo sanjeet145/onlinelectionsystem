@@ -19,6 +19,7 @@ export default function AdminCandidate() {
         const fetchData = async () => {
             try {
                 const response = await fetch('/api/users/candidate');
+                console.log(response);
                 const data = await response.json();
                 console.log(data);
                 setCandidates(data.candidates); // Update state with fetched data
