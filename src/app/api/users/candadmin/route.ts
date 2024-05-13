@@ -8,8 +8,8 @@ import Admin from "@/models/admin";
 import jwt from "jsonwebtoken";
 
 const getDataFromCookie = async (request: NextRequest) => {
+    const cookie = request.cookies.get("session")?.value || '';
     try {
-        const cookie = request.cookies.get("session")?.value || '';
         if (!cookie) {
             throw new Error('Session cookie not found');
         }
@@ -49,7 +49,7 @@ export async function GET(req: NextRequest) {
         catch(error){
             const sec=process.env.JWT_SECRET;
             return NextResponse.json({
-                error,req,sec
+                error
             })
         }
     }
