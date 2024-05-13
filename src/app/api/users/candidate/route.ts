@@ -11,11 +11,14 @@ export async function GET(req: NextRequest) {
     try {
 
         const decode = await getDataFromCookie(req);
+        // console.log(decode);
         if (decode.isAdmin) {
             const admin = await Admin.findOne({ _id: decode.id });
             const adminid=admin.adminId;
+            // console.log(admin);
             const candidates = await Candidate.find({ adminId: adminid });
             const isAdmin=true;
+            // console.log(candidates);
             if (candidates) {
                 return NextResponse.json({
                     candidates, isAdmin

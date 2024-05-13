@@ -5,10 +5,10 @@ interface Candidate {
     id: String,
     fname: String,
     voterid: String,
-    pass:String,
+    pass: String,
     mobile: Number,
     isAdmin: Boolean,
-    isCandidate:Boolean,
+    isCandidate: Boolean,
     isVerified: Boolean,
     token: String,
 }
@@ -26,24 +26,23 @@ export default function AdminCandidate() {
             }
         };
 
-        fetchData(); 
+        fetchData();
     }, []);
+    console.log(candidates);
     return (
         <div className="main-content">
-            
+
             <h2 className='lists-head'>Candidate List</h2>
-            {candidates.length > 0 ? 
+            {candidates && candidates.length > 0 ?
                 <div className='flex-container'>
                     {candidates.map(candidate => (
-                       <>
                         <CandidateCard key={candidate.id} {...candidate} />
-                        </>
-
                     ))}
-                 </div>
-            : 
+                </div>
+                :
                 <p>Loading candidates...</p>
             }
+
         </div>
     );
 }

@@ -80,7 +80,6 @@ export async function POST(req) {
         }
 
     } catch (error) {
-        console.log(error);
         return NextResponse.json({
             message: "Unable to upload",
             success: false,

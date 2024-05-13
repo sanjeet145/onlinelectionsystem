@@ -35,7 +35,7 @@ export default function ProfileDashboard() {
             }
         }
         else{
-            alert("don't want")
+            alert("Don't want to delete")
         }
     }
     const logout = async () => {

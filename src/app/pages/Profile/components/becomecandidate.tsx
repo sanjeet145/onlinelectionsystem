@@ -45,7 +45,7 @@ export default function BecomeCandidate() {
                     formData.append('candidateimage', form.candidateimage);
                 }
 
-                const response = await fetch("/api/image", {
+                const response = await fetch("/api/candidate", {
                     method: 'POST',
                     body: formData,
                 });
