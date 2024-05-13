@@ -33,7 +33,7 @@ export async function GET(req: NextRequest) {
         // if (!cookie) {
         //     throw new Error('Session cookie not found');
         // }
-        const cookie= req.cookies;
+        const cookie= req.headers.get('Authorization');
         // const decoded: any = jwt.verify(cookie, process.env.JWT_SECRET!);
         return NextResponse.json({
             cookie
