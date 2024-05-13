@@ -10,11 +10,11 @@ export async function GET(req: NextRequest) {
 
     try {
 
-        const decode = await getDataFromCookie(req);
+        // const decode = await getDataFromCookie(req);
         // console.log(decode);
-            console.log("admin");
-            const admin = await Admin.findOne({ _id: decode.id });
-            const adminid=admin.adminId;
+            // const admin = await Admin.findOne({ _id: decode.id });
+            // const adminid=admin.adminId;
+            const adminid= "admin";
             // console.log(admin);
             const candidates = await Candidate.find({ adminId: adminid });
             // console.log(candidates);
