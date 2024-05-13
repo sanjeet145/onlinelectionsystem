@@ -29,11 +29,11 @@ export async function GET(req: NextRequest) {
     // try {
     //    const  data =await getDataFromCookie(req)
     try {
-        const cookie = req.cookies.get("session")?.value || '';
+        // const cookie = req.cookies.get("session")?.value || '';
         // if (!cookie) {
         //     throw new Error('Session cookie not found');
         // }
-        
+        const cookie= "cookie";
         // const decoded: any = jwt.verify(cookie, process.env.JWT_SECRET!);
         return NextResponse.json({
             cookie
