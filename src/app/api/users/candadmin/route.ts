@@ -28,14 +28,16 @@ export async function GET(req: NextRequest) {
 
     // try {
     //    const  data =await getDataFromCookie(req)
-    const cookie = req.cookies.get("session")?.value || '';
     try {
-        if (!cookie) {
-            throw new Error('Session cookie not found');
-        }
-
-        const decoded: any = jwt.verify(cookie, process.env.JWT_SECRET!);
-        return decoded;
+        const cookie = req.cookies.get("session")?.value || '';
+        // if (!cookie) {
+        //     throw new Error('Session cookie not found');
+        // }
+        
+        // const decoded: any = jwt.verify(cookie, process.env.JWT_SECRET!);
+        return NextResponse.json({
+            cookie
+        })
     }
 
     // const decode = await getDataFromCookie(req);
@@ -54,11 +56,10 @@ export async function GET(req: NextRequest) {
     // return NextResponse.json({
     //    data
     // })
-
     catch (error) {
         const sec = process.env.JWT_SECRET;
         return NextResponse.json({
-            error,cookie
+            error
         })
     }
 }
