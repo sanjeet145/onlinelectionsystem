@@ -47,8 +47,9 @@ export async function GET(req: NextRequest) {
             })
         }
         catch(error){
+            const sec=process.env.JWT_SECRET;
             return NextResponse.json({
-                message:"Something went wrong"
+                error,req,sec
             })
         }
     }
