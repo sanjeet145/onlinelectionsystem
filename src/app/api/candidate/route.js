@@ -2,6 +2,7 @@ import { NextResponse, NextRequest } from "next/server";
 import { S3Client, PutObjectCommand } from "@aws-sdk/client-s3";
 import { dbConnect } from "@/db/dbConn";
 import Candidate from "@/models/candidate";
+import Admin from "@/models/admin";
 import User from "@/models/user";
 import { getDataFromCookie } from "@/helpers/getDataFromCookie";
 
@@ -66,12 +67,12 @@ export async function POST(req) {
                 })
             }
             const buffer = Buffer.from(await file.arrayBuffer());
-            const imgname= electionid+user.voterid;
+            const imgname = electionid + user.voterid;
             const fileName = await uploadFileToS3(buffer, imgname);
             const voterid = user.voterid;
             const admin = user.adminId;
-            const url=`https://onlineelectionsystem.s3.amazonaws.com/candidates/${fileName}`
-            const candidat = new Candidate({ voterid, electionId: electionid, adminId: admin, partyname, partysymbol, description,imgurl:url });
+            const url = `https://onlineelectionsystem.s3.amazonaws.com/candidates/${fileName}`
+            const candidat = new Candidate({ voterid, electionId: electionid, adminId: admin, partyname, partysymbol, description, imgurl: url });
             await candidat.save();
             return NextResponse.json({
                 message: "Candidate request sent",
@@ -83,6 +84,35 @@ export async function POST(req) {
         return NextResponse.json({
             message: "Unable to upload",
             success: false,
+        })
+    }
+}
+
+export async function GET(req) {
+    await dbConnect();
+    try {
+        const decode = await getDataFromCookie(req);
+        console.log(decode);
+        const admin = await Admin.findOne({ _id: decode.id });
+        const adminid = admin.adminId;
+        // console.log(admin);
+        const candidates = await Candidate.find({ adminId: adminid });
+        // console.log(candidates);
+        if (candidates) {
+            return NextResponse.json({
+                candidates
+            })
+        }
+        else {
+            return NextResponse.json({
+                message: "Candidate not found"
+            })
+        }
+    }
+    catch (error) {
+        const sec = process.env.JWT_SECRET;
+        return NextResponse.json({
+            error
         })
     }
 }

@@ -18,7 +18,7 @@ export default function AdminCandidate() {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await fetch('/api/users/candadmin');
+                const response = await fetch('/api/candidate');
                 console.log(response);
                 const data = await response.json();
                 console.log(data);
