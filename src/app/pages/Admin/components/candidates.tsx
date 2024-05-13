@@ -20,6 +20,7 @@ export default function AdminCandidate() {
             try {
                 const response = await fetch('/api/users/candidate');
                 const data = await response.json();
+                console.log(data);
                 setCandidates(data.candidates); // Update state with fetched data
             } catch (error) {
                 console.error('Error fetching candidates:', error);
