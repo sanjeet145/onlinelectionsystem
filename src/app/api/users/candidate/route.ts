@@ -9,29 +9,6 @@ export async function GET(req: NextRequest) {
     await dbConnect();
 
     try {
-
-        const decode = await getDataFromCookie(req);
-        // console.log(decode);
-        if (decode.isAdmin) {
-            console.log("admin");
-            const admin = await Admin.findOne({ _id: decode.id });
-            const adminid=admin.adminId;
-            // console.log(admin);
-            const candidates = await Candidate.find({ adminId: adminid });
-            // console.log(candidates);
-            if (candidates) {
-                return NextResponse.json({
-                    candidates
-                })
-            }
-            else {
-                return NextResponse.json({
-                    message: "No candidates found"
-                })
-            }
-
-        }
-        else {
             // get the adminid and electionid
             const url = req.url || '';
             const queryString = url.split('?', 2);
@@ -59,7 +36,6 @@ export async function GET(req: NextRequest) {
                     message: "No candidates found"
                 })
             }
-        }
 
     } catch (error) {
         return NextResponse.json({
