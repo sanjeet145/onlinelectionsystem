@@ -28,7 +28,6 @@ export default function AdminCandidate() {
 
         fetchData();
     }, []);
-    console.log(candidates);
     return (
         <div className="main-content">
 

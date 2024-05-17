@@ -18,7 +18,7 @@ export default function AdminDashboard() {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await fetch('/api/users/voters');
+                const response = await fetch('/api/voters');
                 const data = await response.json();
                 setCandidates(data.users);
             } catch (error) {

@@ -92,7 +92,7 @@ export async function GET(req) {
     await dbConnect();
     try {
         const decode = await getDataFromCookie(req);
-        console.log(decode);
+        // console.log(decode);
         const admin = await Admin.findOne({ _id: decode.id });
         const adminid = admin.adminId;
         // console.log(admin);

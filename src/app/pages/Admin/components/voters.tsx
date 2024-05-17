@@ -18,7 +18,7 @@ export default function Voters() {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await fetch('/api/users/voters');
+                const response = await fetch('/api/voters');
                 const data = await response.json();
                 setVoter(data.users); // Update state with fetched data
             } catch (error) {

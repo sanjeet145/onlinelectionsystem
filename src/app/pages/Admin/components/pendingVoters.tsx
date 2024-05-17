@@ -20,7 +20,7 @@ export default function PendingVoters() {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await fetch('/api/users/voters');
+                const response = await fetch('/api/verifyvoters');
                 const data = await response.json();
                 setvoters(data.users);
             } catch (error) {
