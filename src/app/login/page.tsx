@@ -113,7 +113,7 @@ export default function Login() {
                         </div>
                         <button className="Btn" type="submit">{loading ? "loading" : "Login"}</button>
                     </form>
-                    <p>Don't have account <Link href={"/register"} className="link">Register</Link></p>
+                    <p>Create new account <Link href={"/register"} className="link">Register</Link></p>
                 </div>
             </div>
         </>
