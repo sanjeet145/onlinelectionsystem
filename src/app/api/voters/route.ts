@@ -6,6 +6,8 @@ import Admin from '@/models/admin';
 import jwt from 'jsonwebtoken';
 
 export async function GET(req: NextRequest) {
+    const cookie = await req.cookies.get("session")?.value || '';
+   
     await dbConnect();
     try {
         // const decode = await getDataFromCookie(req);
@@ -34,7 +36,6 @@ export async function GET(req: NextRequest) {
             }));
 
         // console.log(users);
-        const cookie = req.cookies.get("session")?.value || '';
         const decoded: any = jwt.verify(cookie, process.env.JWT_SECRET!);
 
         const secret = process.env.JWT_SECRET;
