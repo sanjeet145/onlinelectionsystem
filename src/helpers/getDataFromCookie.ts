@@ -8,7 +8,7 @@ export const getDataFromCookie = async (request: NextRequest) => {
         return (decoded);
 
     } catch (error) {
-        console.log(error);
+        console.log("Error decoding the cookie");
     }
 }
 

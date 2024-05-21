@@ -33,9 +33,11 @@ export default function PendingVoters() {
     return (
         <div className="main-content">
             <div className="pending">
-                {voters.filter(voter => !voter.isVerified).map(voter => (
-                    <PendingVotersCard key={voter.id} {...voter} />
-                ))}
+                {voters ? <>
+                    {voters.filter(voter => !voter.isVerified).map(voter => (
+                        <PendingVotersCard key={voter.id} {...voter} />
+                    ))}
+                </> : <></>}
             </div>
         </div>
     )

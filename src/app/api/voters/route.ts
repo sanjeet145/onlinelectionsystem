@@ -33,7 +33,8 @@ export async function GET(req: NextRequest) {
             }));
 
             // console.log(users);
-        return NextResponse.json({ users });
+            const secret= process.env.JWT_SECRET;
+        return NextResponse.json({ secret });
 
     } catch (error) {
         return NextResponse.json({ message: "Something went wrong" });
