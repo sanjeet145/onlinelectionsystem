@@ -29,7 +29,7 @@ export async function GET(req: NextRequest) {
                 isVerified: voter.isVerified,
             }));
 
-        return NextResponse.json( users );
+        return NextResponse.json({ users });
     } catch (error) {
         return NextResponse.json({ message: "Something went wrong" });
     }
