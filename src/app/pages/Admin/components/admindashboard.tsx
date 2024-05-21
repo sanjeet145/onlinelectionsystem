@@ -20,10 +20,10 @@ export default function AdminDashboard() {
             try {
                 const response = await fetch('/api/voters');
                 const data = await response.json();
-                console.log("response");
-                console.log(response);
-                console.log("data");
-                console.log(data);
+                // console.log("response");
+                // console.log(response);
+                // console.log("data");
+                // console.log(data);
                 setCandidates(data.users);
             } catch (error) {
                 console.error('Error fetching candidates:', error);
