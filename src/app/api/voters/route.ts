@@ -10,10 +10,8 @@ export async function GET(req: NextRequest) {
     await dbConnect();
     try {
         // console.log(decode);
-        // const admin = await Admin.findOne({ _id: decode.id });
-        // const voters = await User.find({ adminId: admin.adminId });
-        const adminid = "admin";
-        const voters = await User.find({ adminId: adminid });
+        const admin = await Admin.findOne({ _id: decode.id });
+        const voters = await User.find({ adminId: admin.adminId });
         const users = voters
             .filter((voter: {
                 isVerified: Boolean;
@@ -34,10 +32,10 @@ export async function GET(req: NextRequest) {
             }));
 
         // console.log(users);
-        return NextResponse.json({ decode});
+        return NextResponse.json({ users});
 
     } catch (error) {
-        return NextResponse.json({error});
-        // return NextResponse.json({ message: "Something went wrong" });
+        // return NextResponse.json({error});
+        return NextResponse.json({ message: "Something went wrong" });
     }
 }
