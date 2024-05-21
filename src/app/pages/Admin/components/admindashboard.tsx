@@ -20,6 +20,8 @@ export default function AdminDashboard() {
             try {
                 const response = await fetch('/api/voters');
                 const data = await response.json();
+                console.log("data");
+                console.log(data);
                 setCandidates(data.users);
             } catch (error) {
                 console.error('Error fetching candidates:', error);
@@ -28,16 +30,17 @@ export default function AdminDashboard() {
 
         fetchData();
     }, []);
+    console.log(candidates);
     let candis=0;
     let voted=0
-    for(const candidate of candidates){
-        if(candidate.isCandidate){
-            candis++;
-        }
-        if(candidate.isVoted){
-            voted++;
-        }
-    }
+    // for(const candidate of candidates){
+    //     if(candidate.isCandidate){
+    //         candis++;
+    //     }
+    //     if(candidate.isVoted){
+    //         voted++;
+    //     }
+    // }
     return (
         <div className="main-content">
             <div className="flex-container">
@@ -46,18 +49,18 @@ export default function AdminDashboard() {
                     <h1>Number of Candidates</h1>
 
                 </div>
-                <div className=" dashboard-card">
+                {/* <div className=" dashboard-card">
                     <h1>{candidates.length}</h1>
                     <h1>Number of Voters</h1>
-                </div>
+                </div> */}
                 <div className=" dashboard-card">
                     <h1>{voted}</h1>
                     <h1>Total Voted</h1>
                 </div>
-                <div className=" dashboard-card">
+                {/* <div className=" dashboard-card">
                     <h1>{candidates.length-voted}</h1>
                     <h1>Remaining Votes</h1>
-                </div>
+                </div> */}
                 
             </div>
         </div>
