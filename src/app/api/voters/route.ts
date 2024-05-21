@@ -6,11 +6,9 @@ import Admin from '@/models/admin';
 import jwt from 'jsonwebtoken';
 
 export async function GET(req: NextRequest) {
-    const cookie = await req.cookies.get("session")?.value || '';
-   
+    const decode = await getDataFromCookie(req);
     await dbConnect();
     try {
-        // const decode = await getDataFromCookie(req);
         // console.log(decode);
         // const admin = await Admin.findOne({ _id: decode.id });
         // const voters = await User.find({ adminId: admin.adminId });
@@ -36,10 +34,7 @@ export async function GET(req: NextRequest) {
             }));
 
         // console.log(users);
-        const decoded: any = jwt.verify(cookie, process.env.JWT_SECRET!);
-
-        const secret = process.env.JWT_SECRET;
-        return NextResponse.json({ decoded});
+        return NextResponse.json({ decode});
 
     } catch (error) {
         return NextResponse.json({error});
