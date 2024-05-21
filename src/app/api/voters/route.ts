@@ -31,6 +31,8 @@ export async function GET(req: NextRequest) {
 
         return NextResponse.json({ users });
     } catch (error) {
-        return NextResponse.json({ message: "Something went wrong" });
+        return NextResponse.json({ message: error });
+
+        // return NextResponse.json({ message: "Something went wrong" });
     }
 }
