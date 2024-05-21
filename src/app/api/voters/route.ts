@@ -6,8 +6,9 @@ import Admin from '@/models/admin';
 
 export async function GET(req: NextRequest) {
     await dbConnect();
-    const decode = await getDataFromCookie(req);
     try {
+        const decode = await getDataFromCookie(req);
+        // console.log(decode);
         const admin = await Admin.findOne({ _id: decode.id });
         const voters = await User.find({ adminId: admin.adminId });
         const users = voters
@@ -29,10 +30,10 @@ export async function GET(req: NextRequest) {
                 isVerified: voter.isVerified,
             }));
 
+            // console.log(users);
         return NextResponse.json({ users });
-    } catch (error) {
-        return NextResponse.json({ message: decode });
 
-        // return NextResponse.json({ message: "Something went wrong" });
+    } catch (error) {
+        return NextResponse.json({ message: "Something went wrong" });
     }
 }

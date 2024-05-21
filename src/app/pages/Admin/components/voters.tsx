@@ -20,8 +20,8 @@ export default function Voters() {
             try {
                 const response = await fetch('/api/voters');
                 const data = await response.json();
-                console.log("voters");
-                console.log(data);
+                // console.log("voters");
+                // console.log(data);
                 setVoter(data.users); // Update state with fetched data
             } catch (error) {
                 console.error('Error fetching candidates:', error);
