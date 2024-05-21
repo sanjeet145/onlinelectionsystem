@@ -51,15 +51,15 @@ export default function AdminDashboard() {
 
                 </div>
                 <div className=" dashboard-card">
-                    <h1>{candidates.length}</h1>
+                    {/* <h1>{candidates.length}</h1> */}
                     <h1>Number of Voters</h1>
                 </div>
                 <div className=" dashboard-card">
-                    <h1>{voted}</h1>
+                    {/* <h1>{voted}</h1> */}
                     <h1>Total Voted</h1>
                 </div>
                 <div className=" dashboard-card">
-                    <h1>{candidates.length - voted}</h1>
+                    {/* <h1>{candidates.length - voted}</h1> */}
                     <h1>Remaining Votes</h1>
                 </div>
 
