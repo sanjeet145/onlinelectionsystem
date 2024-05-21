@@ -36,7 +36,7 @@ export default function NewElection() {
                 // router.push('/');
             }
 
-        } catch (e: any) {
+        } catch (e) {
             alert("Something went wrong");
         }
     };

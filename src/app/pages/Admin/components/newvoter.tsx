@@ -4,10 +4,10 @@ import { useState } from "react";
 import '../../css/forms.css';
 
 export default function AddNewVoter() {
-    const [val, setVal] = useState("");
-    const inputEvent = (e: any) => {
-        console.log(e.target.value);
-    }
+    // const [val, setVal] = useState("");
+    // const inputEvent = (e: any) => {
+    //     console.log(e.target.value);
+    // }
 
     return (
         <div className="main-content">
