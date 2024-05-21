@@ -28,15 +28,19 @@ export default function AdminDashboard() {
 
         fetchData();
     }, []);
-    let candis=0;
-    let voted=0
-    for(const candidate of candidates){
-        if(candidate.isCandidate){
-            candis++;
+    let candis = 0;
+    let voted = 0;
+    try {
+        for (const candidate of candidates) {
+            if (candidate.isCandidate) {
+                candis++;
+            }
+            if (candidate.isVoted) {
+                voted++;
+            }
         }
-        if(candidate.isVoted){
-            voted++;
-        }
+    } catch (error) {
+        console.log(error);
     }
     return (
         <div className="main-content">
@@ -55,13 +59,10 @@ export default function AdminDashboard() {
                     <h1>Total Voted</h1>
                 </div>
                 <div className=" dashboard-card">
-                    <h1>{candidates.length-voted}</h1>
+                    <h1>{candidates.length - voted}</h1>
                     <h1>Remaining Votes</h1>
                 </div>
-                {/* <div className=" dashboard-card">
-                    <h1>{candidates[1].fname}</h1>
-                    <h1>Candidate Wining</h1>
-                </div> */}
+
             </div>
         </div>
     )
