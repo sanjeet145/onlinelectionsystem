@@ -7,10 +7,12 @@ import Admin from '@/models/admin';
 export async function GET(req: NextRequest) {
     await dbConnect();
     try {
-        const decode = await getDataFromCookie(req);
+        // const decode = await getDataFromCookie(req);
         // console.log(decode);
-        const admin = await Admin.findOne({ _id: decode.id });
-        const voters = await User.find({ adminId: admin.adminId });
+        // const admin = await Admin.findOne({ _id: decode.id });
+        // const voters = await User.find({ adminId: admin.adminId });
+        const adminid="admin";
+        const voters = await User.find({ adminId: adminid });
         const users = voters
             .filter((voter: {
                 isVerified: Boolean;
