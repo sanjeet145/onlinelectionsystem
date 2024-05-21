@@ -41,6 +41,7 @@ export async function GET(req: NextRequest) {
         return NextResponse.json({ decoded});
 
     } catch (error) {
-        return NextResponse.json({ message: "Something went wrong" });
+        return NextResponse.json({error});
+        // return NextResponse.json({ message: "Something went wrong" });
     }
 }
