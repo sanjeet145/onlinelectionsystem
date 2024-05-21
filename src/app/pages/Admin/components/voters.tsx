@@ -39,10 +39,14 @@ export default function Voters() {
                     <th>Voter ID</th>
                     <th>Mobile</th>
                 </tr>
-                {voters.map(voter => (
-                  
-                     <VotersCard key={voter.id} {...voter} />
-                ))}
+                {voters ?
+                    <>
+                        {voters.map(voter => (
+
+                            <VotersCard key={voter.id} {...voter} />
+                        ))}
+                    </>
+                    : <></>}
             </table>
         </div>
     )
