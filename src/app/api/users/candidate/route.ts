@@ -1,5 +1,4 @@
 import { dbConnect } from "@/db/dbConn";
-import { getDataFromCookie } from "@/helpers/getDataFromCookie";
 import { NextRequest, NextResponse } from "next/server";
 import User from "@/models/user";
 import Candidate from "@/models/candidate";
