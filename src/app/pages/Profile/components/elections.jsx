@@ -24,7 +24,9 @@ export default function Elections() {
                     const queryParams = new URLSearchParams(requestData);
                     const response = await fetch(`/api/users/candidate?${queryParams}`);
                     const data = await response.json();
+                    console.log(data)
                     setcandidates(data.candidates);
+                    console.log(data.candidates)
                     setelectionAdminId(requestData);
                     setLoading(false);
                 } catch (error) {

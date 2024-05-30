@@ -14,7 +14,6 @@ export async function GET(req: NextRequest) {
         const queryString = url.split('?', 2);
         const cleanedQueryString = queryString[1].substring(0);
         const keyValuePairs = cleanedQueryString.split('&');
-
         let adminId, electionId,isAdmin;
         keyValuePairs.forEach(pair => {
             const [key, value] = pair.split('=');
