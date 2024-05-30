@@ -49,7 +49,7 @@ export async function GET(req: NextRequest) {
 
     } catch (error) {
         return NextResponse.json({
-            message: "Something went wrong"
+            message: error
         })
     }
 }
