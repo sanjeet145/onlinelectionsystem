@@ -1,7 +1,7 @@
 import Image from "next/image";
 
 export default function CandidateCard(candidate: any) {
-    const vote = async (electionID:any, voterid:any) => {
+    const vote = async (electionID: any, voterid: any) => {
         try {
             const form = {
                 "electionid": electionID,
@@ -46,8 +46,10 @@ export default function CandidateCard(candidate: any) {
                             <p><a>Party Name:</a> {candidate.partyname}</p>
                             <p><a>Description: </a>{candidate.description}</p>
                         </div>
-                        {candidate.isCandidate ?
-                            <button className="Btn" onClick={()=>{vote(candidate.electionId,candidate.voterid)}}>Vote</button> : <button className="Btn" onClick={() => { verifyCandidate(candidate.voterid, candidate.electionId) }}>Approve</button>
+                        {candidate.isCandidate ? <>
+                            <p><a>Total Votes: </a>{candidate.totalVotes}</p>
+                            <button className="Btn" onClick={() => { vote(candidate.electionId, candidate.voterid) }}>Vote</button>
+                        </> : <button className="Btn" onClick={() => { verifyCandidate(candidate.voterid, candidate.electionId) }}>Approve</button>
                         }
                     </>
                 ) :
