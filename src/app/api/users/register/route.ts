@@ -1,7 +1,6 @@
 
 import { dbConnect } from '@/db/dbConn';
 import Admin from '@/models/admin';
-import Election from '@/models/election';
 import User from '@/models/user';
 import { NextRequest, NextResponse } from 'next/server';
 
@@ -22,15 +21,7 @@ export async function POST(request: NextRequest) {
                     success: false
                 });
             }
-            const elections = await Election.find({adminId});
-        const elec = elections.map((election: {
-            _id: any;
-    }) => (
-            {
-                electionid: election._id,
-            }
-        )) 
-            const newUser = new User({ fname, voterid, pass, mobile, adminId, Voted:elec })
+            const newUser = new User({ fname, voterid, pass, mobile, adminId})
             await newUser.save();
             return NextResponse.json({
                 message: "User Created",

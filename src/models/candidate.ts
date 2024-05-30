@@ -38,6 +38,10 @@ const candidateSchema = new mongoose.Schema({
         type: Boolean,
         default: false,
     },
+    totalVotes:{
+        type:Number,
+        default:0
+    }
 })
 
 let Candidate: any;

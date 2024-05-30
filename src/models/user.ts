@@ -26,9 +26,11 @@ const userSchema = new mongoose.Schema({
     Voted: [
         {
             electionid: {
-                type: mongoose.Schema.Types.ObjectId,
-                ref: 'election', // Assuming you have an Election model
+                type: String, 
                 required: true,
+            },
+            votedCandidateid:{
+                type:String,
             },
             isVoted: {
                 type: Boolean,

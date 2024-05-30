@@ -25,7 +25,22 @@ const adminSchema = new mongoose.Schema({
     isAdmin:{
         type:Boolean,
         default:true,
-    }
+    },
+    Voted: [
+        {
+            electionid: {
+                type: String, 
+                required: true,
+            },
+            votedCandidateid:{
+                type:String,
+            },
+            isVoted: {
+                type: Boolean,
+                default: false,
+            },
+        }
+    ],
 })
 
 let Admin:any;

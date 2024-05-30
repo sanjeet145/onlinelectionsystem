@@ -1,7 +1,40 @@
 import Image from "next/image";
 
 export default function CandidateCard(candidate: any) {
-
+    const vote = async (electionID:any, voterid:any) => {
+        try {
+            const form = {
+                "electionid": electionID,
+                "voterid": voterid
+            }
+            const response = await fetch("/api/vote", {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ form }),
+            });
+            const data = await response.json();
+            alert(data.message);
+        } catch (error) {
+            alert("Something went wrong");
+        }
+    }
+    const verifyCandidate = async (candidateid: any, electionId: any) => {
+        try {
+            const form = {
+                "voterid": candidateid,
+                "electionId": electionId,
+            }
+            const response = await fetch("/api/verifycandidate", {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ form }),
+            });
+            const data = await response.json();
+            alert(data.message);
+        } catch (error) {
+            alert("Something went wrong");
+        }
+    }
     return (
         <div className="candidate-card">
             {candidate ?
@@ -13,8 +46,8 @@ export default function CandidateCard(candidate: any) {
                             <p><a>Party Name:</a> {candidate.partyname}</p>
                             <p><a>Description: </a>{candidate.description}</p>
                         </div>
-                        {candidate.isApproved ?
-                            <button className="Btn">Vote</button> : <button className="Btn">Approve</button>
+                        {candidate.isCandidate ?
+                            <button className="Btn" onClick={()=>{vote(candidate.electionId,candidate.voterid)}}>Vote</button> : <button className="Btn" onClick={() => { verifyCandidate(candidate.voterid, candidate.electionId) }}>Approve</button>
                         }
                     </>
                 ) :
