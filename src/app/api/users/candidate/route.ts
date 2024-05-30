@@ -7,10 +7,9 @@ import Admin from "@/models/admin";
 
 export async function GET(req: NextRequest) {
     await dbConnect();
-
+    const url = req.url || '';
     try {
         // get the adminid and electionid
-        const url = req.url || '';
         const queryString = url.split('?', 2);
         const cleanedQueryString = queryString[1].substring(0);
         const keyValuePairs = cleanedQueryString.split('&');
