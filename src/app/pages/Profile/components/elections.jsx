@@ -111,9 +111,11 @@ export default function Elections() {
                                     month: 'short',
                                     year: 'numeric'
                                 })}</a></h1>
-                                {election.result?
+                                <h1>Election Id: <a>{election.electionId}</a></h1>
+
+                                {election.result ?
                                     <h1><a>{election.result}</a> Wining/Won</h1>
-                                    :<></>}
+                                    : <></>}
                                 <button className="Btn" onClick={() => openCandidate(election.electionId, election.adminId)}>Candidates</button>
                                 {openform ?
                                     < div className="small-form">
