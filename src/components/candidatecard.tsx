@@ -43,6 +43,7 @@ export default function CandidateCard(candidate: any) {
                         <Image loader={({ src }) => src} src={candidate.imgurl} alt={candidate.voterid} width={300} height={300} />
                         <div className="candidate-details">
                             <p><a>Candidate Name:</a> {candidate.voterid}</p>
+                            <p><a>Election Id: </a>{candidate.electionId}</p>
                             <p><a>Party Name:</a> {candidate.partyname}</p>
                             <p><a>Description: </a>{candidate.description}</p>
                         </div>
