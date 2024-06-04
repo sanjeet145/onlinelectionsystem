@@ -33,6 +33,7 @@ export default function PreviousElections() {
                                         month: 'short',
                                         year: 'numeric'
                                     })}</a></h1>
+                                    <h1>Election Id: <a>{election.electionId}</a></h1>
                                     {election.result?
                                     <h1><a>{election.result}</a> Wining/Won</h1>
                                     :<></>}
