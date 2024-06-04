@@ -1,5 +1,7 @@
 "use client"
 
+import Image from "next/image";
+
 // import Login from "./login/page";
 // import Register from "./register/page";
 
@@ -20,6 +22,16 @@ export default function Home() {
     )} */}
     <a href="/login">Login</a>
     <a href="/register">Register</a>
+    <div className="bannerimage">
+      <Image
+        src="/images/topbanner.jpg"
+        alt="Top Banner"
+        layout="fill"
+        objectFit="cover"
+        objectPosition="center"
+        className="image"
+      />
+    </div>
     </>
   );
 }
