@@ -1,4 +1,4 @@
-:root{
+:root {
     --color1: #C38EB4;
     --color2: #26425A;
     --color3: #294D61;
@@ -9,26 +9,34 @@
     --color8: #E56B6F;
 }
 
-.form-card{
+.form-card {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background-color: var(--color2);  
+    background: url('/images/backgroundimage.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
 }
-.card1{
+
+.card1 {
     height: fit-content;
     padding: 10px;
     border-radius: 10px;
-    background-color: #05161A;
-      border: 1px solid var(--color1);
+    /* background-color: #156170; */
+    background-color: transparent;
+    backdrop-filter: blur(5px);
+    border: 1px solid var(--color1);
+    width: fit-content;
+    padding: 50px;
+}
 
-  }
-
-.formc{
+.formc {
     padding: 10px;
     border-radius: 5px;
-    input{
+
+    input {
         background-color: rgb(231, 229, 226);
         margin-bottom: 10px;
         color: var(--color5);
@@ -37,6 +45,7 @@
         outline: none;
     }
 }
+
 .passwordInput {
     position: relative;
 }
@@ -56,10 +65,10 @@
 }
 
 .togglePassword:hover {
-    color: #007bff; 
+    color: #007bff;
 }
 
-.Btn{
+.Btn {
     margin-top: 10px;
     height: 40px;
     width: 100px;
@@ -67,25 +76,29 @@
     font-weight: bolder;
     background-color: var(--color6);
 }
-.Btn:hover{
+
+.Btn:hover {
     border: 1px solid var(--color7);
     color: var(--color6);
     background-color: var(--color2);
 }
-.link{
+
+.link {
     color: var(--color8);
 }
 
-.admin{
+.admin {
     height: fit-content;
     padding: 10px;
     background-color: #007bff;
     border-radius: 5px;
     cursor: pointer;
 }
-.uname{
+
+.uname {
     margin-top: 10px;
 }
-.admin-clicked{
+
+.admin-clicked {
     background-color: #043d7a;
 }

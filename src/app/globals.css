@@ -53,7 +53,12 @@ body {
   background-color: var(--color2);
 }
 
-.navbar{
+.homepage{
+  height: 100vh;
+  width: 100vw;
+  background-color: #30A1B8;
+}
+.homenavbar{
   height: 80px;
   width: 100%;
   background-color: #30A1B8;

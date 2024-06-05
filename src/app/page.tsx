@@ -11,7 +11,7 @@ export default function Home() {
   //  }; 
   //  var count=0;
   return (
-    <>
+    <div className="homepage">
       {/* <div className="banner"></div>
     <button onClick={voter}>Voter</button>
     <button>Candidate</button>
@@ -20,11 +20,11 @@ export default function Home() {
     (<Login/>):(
       <Register/>
     )} */}
-      <div className="navbar">
+      <div className="homenavbar">
         <a href="/login" className="Btn">Login</a>
         <a href="/register" className="Btn">Register</a>
       </div>
       <div className="bannerimage"> </div>
-    </>
+    </div>
   );
 }
